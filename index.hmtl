@@ -330,6 +330,11 @@
             width: 100%;
             height: 400px;
             background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
         }
 
         .modal-body {
@@ -467,21 +472,21 @@
     </style>
 </head>
 <body>
-    <header class="header" role="banner">
+    <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo" aria-label="IndieFilms TR Ana Sayfa">IndieFilms TR</a>
-                <button class="theme-toggle" id="themeToggle" aria-label="Tema Değiştir">🌙 Koyu Tema</button>
+                <a href="#" class="logo">IndieFilms TR</a>
+                <button class="theme-toggle" id="themeToggle">🌙 Koyu Tema</button>
             </div>
         </div>
     </header>
 
-    <section class="search-section" role="search">
+    <section class="search-section">
         <div class="container">
             <div class="search-bar">
-                <input type="text" class="search-input" placeholder="Film ara..." id="searchInput" aria-label="Film Arama">
+                <input type="text" class="search-input" placeholder="Film ara..." id="searchInput">
             </div>
-            <div class="filters" role="group" aria-label="Kategori Filtreleri">
+            <div class="filters">
                 <button class="filter-btn active" data-filter="all">Tümü</button>
                 <button class="filter-btn" data-filter="drama">Kısa Dram</button>
                 <button class="filter-btn" data-filter="experimental">Deneysel</button>
@@ -492,18 +497,18 @@
         </div>
     </section>
 
-    <main class="main-content" role="main">
+    <main class="main-content">
         <div class="container">
-            <div class="video-grid" id="videoGrid" role="grid"></div>
-            <div class="loading" id="loading" style="display: none;" role="status" aria-label="Yükleniyor">
+            <div class="video-grid" id="videoGrid"></div>
+            <div class="loading" id="loading" style="display: none;">
                 <div class="spinner"></div>Videolar yükleniyor...
             </div>
         </div>
     </main>
 
-    <section class="user-section" role="region" aria-labelledby="user-features-title">
+    <section class="user-section">
         <div class="container">
-            <h2 id="user-features-title" style="text-align: center; margin-bottom: 2rem;">Platform Özellikleri</h2>
+            <h2 style="text-align: center; margin-bottom: 2rem;">Platform Özellikleri</h2>
             <div class="user-features">
                 <div class="feature-card">
                     <div class="feature-icon">❤️</div>
@@ -527,29 +532,27 @@
         </div>
     </section>
 
-    <div class="modal" id="videoModal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+    <div class="modal" id="videoModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modal-title">Film Başlığı</h2>
-                <button class="close-btn" id="closeModal" aria-label="Modalı Kapat">×</button>
+               <h2 id="modal-title">Film Başlığı</h2>
+                <button class="close-btn" id="closeModal">×</button>
             </div>
-            <video class="video-player" id="videoPlayer" controls crossorigin="anonymous" aria-label="Video Oynatıcı">
-                <source src="" type="video/mp4">
-                <track kind="subtitles" src="" srclang="tr" label="Türkçe" default>
-                Tarayıcınız video etiketini desteklemiyor.
-            </video>
+            <div class="video-player" id="videoPlayer">
+                Video oynatıcı burada görünecek - Gerçek videolarınızı ekleyebilirsiniz
+            </div>
             <div class="modal-body">
                 <p id="modal-description">Film açıklaması burada görünecek.</p>
                 <div class="video-actions">
-                    <button class="action-btn"id="modalFavorite" aria-label="Favorilere Ekle">❤️ <span>Favorilere Ekle</span></button>
-                    <button class="action-btn" id="modalWatchlist" aria-label="İzleme Listesine Ekle">📺 <span>İzleme Listesi</span></button>
-                    <button class="action-btn" id="modalShare" aria-lael="Paylaş">🔗 <span>Paylaş</span></button>
+                    <button class="action-btn" id="modalFavorite">❤️ <span>Favorilere Ekle</span></button>
+                    <button class="action-btn" id="modalWatchlist">📺 <span>İzleme Listesi</span></button>
+                    <button class="action-btn" id="moalShare">🔗 <span>Paylaş</span></button>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="footer" role="contentinfo">
+    <footer class="footer">
         <div class="container">
             <div class="readme-section">
                 <h3>GiHub Pages'e Nasıl Yüklenir?</h3>
@@ -571,30 +574,93 @@
     </footer>
 
     <script>
+        // Video data
         const videosData = [
-            {id: 1, title: "Gecenin Sessizliği", description: "Şehrin karanlık sokaklarında geçen psikolojik bir dram. Yalnızlık ve umut arasındaki ince çizgiyi keşfeden etkileyici bir hikaye.", tags: ["drama", "psikolojik"], category: "drama", duration: "12:45", thumbnail: "🎬", videoUrl: "", subtitles: "", isFavorite: false, inWatchlist: false},
-            {id: 2, title: "Renklerin Dansı", description: "Soyut animasyon teknikleriyle yaratılmış gösel bir şölen. Müzik ve renklerin mükemmel uyumu ile büyüleyici bir deneyim.", tags: ["animation", "deneysel"], category: "animation", duration: "08:30", thumbnail: "🎨", videoUrl: "", subtitles: "", isFavorite: false, inWatchlist: false},
-            {id: 3 title: "Zaman Kırılması", description: "Deneysel anlatım teknikleriyle kurgulanmış bir bilim kurgu hikayesi. Zamanın doğrusal olmayan yapısını sorgulayan cesur bir yaklaşım.", tags: ["experimental", "sci-fi"], category: "experimental", duration: "15:20", thumbnail: "🌌", videoUrl: "", subtitles: "", isFavorite: true, inWatchlist: false},
-            {id: 4, title:"Kayıp Anılar", description: "Yaşlılık ve hafıza kaybı temasını işleyen dokunaklı bir hikaye. İnsan zihninin karmaşıklığını anlatan duygusal bir yolculuk.", tags: ["drama", "aile"], category: "drama", duration: "18:45", thumbnail: "🧠", videoUrl: "", subtitles: "", isFavorite: false, inWatchlist: true},
-            {id: 5, title: "Sokak Müzisyenleri", description: "İstanbul'un sokak müzisyenlerini konu alan belgesel tarzı bir film. Sanatın hayatta kalma mücadelesini gözler önüne seriyor.", tags: ["documentary", "müzik"], category: "documentary", duration: "22:10", thmbnail: "🎵", videoUrl: "", subtitles: "", isFavorite: false, inWatchlist: false},
-            {id: 6, ttle: "Komşu Kapıları", description: "Apartman hayatının komik yanlarını konu alan neşeli bir komedi. Gündelik hayattan kesitlerle güldüren sıcak bir hikaye.", tags: ["comedy", "sosyal"], category: "comedy", duration: "14:15", thumbnail: "😄", videoUrl: "", subtitles: "", isFavorite: false, inWatchlist: false}
+            {
+                id: 1,
+                title: "Gecenin Sessizliği",
+                description: "Şehrin karanlık sokaklarında geçen psikolojik bir dram. Yalnızlık ve umut arasındaki ince çizgiyi keşfeden etkileyici bir hikaye.",
+                tags: ["drama", "psikolojik"],
+                category: "drama",
+                duration: "12:45",
+                thumbnail: "🎬",
+                isFavorite: false,
+                inWatchlist: false
+            },
+            {
+                id: 2,
+                title: "Renklerin Dansı",
+                desciption: "Soyut animasyon teknikleriyle yaratılmış görsel bir şölen. Müzik ve renklerin mükemmel uyumu ile büyüleyici bir deneyim.",
+                tags: ["animation", "deneysel"],
+                category: "animation",
+                duration: "08:30",
+                thumbnail: "🎨",
+                isFavorite: false,
+                inWatchlist: false
+            },
+            {
+                id: 3,
+               title: "Zaman Kırılması",
+                description: "Deneysel anlatım teknikleriyle kurgulanmış bir bilim kurgu hikayesi. Zamanın doğrusal olmayan yapısını sorgulayan cesur bir yaklaşım.",
+                tags: ["experimental", "sci-fi"],
+                category: "experimental",
+                duration: "15:20",
+                thumbnail: "🌌",
+                isFavorite: true,
+                inWatchlist: false
+            },
+            {
+                id: 4,
+                title:"Kayıp Anılar",
+                description: "Yaşlılık ve hafıza kaybı temasını işleyen dokunaklı bir hikaye. İnsan zihninin karmaşıklığını anlatan duygusal bir yolculuk.",
+                tags: ["drama", "aile"],
+                category: "drama",
+                duration: "18:45",
+                thumbnail: "🧠",
+                isFavorite: false,
+                inWatchlist: true
+            },
+            {
+                id: 5,
+                title: "Sokak Müzisyenleri",
+                description: "İstanbul'un sokak müzisyenlerini konu alan belgesel tarzı bir film. Sanatın hayatta kalma mücadelesini gözler önüne seriyor.",
+                tags: ["documentary", "müzik"],
+                category: "documentary",
+                duration: "22:10",
+                thmbnail: "🎵",
+                isFavorite: false,
+                inWatchlist: false
+            },
+            {
+                id: 6,
+                ttle: "Komşu Kapıları",
+                description: "Apartman hayatının komik yanlarını konu alan neşeli bir komedi. Gündelik hayattan kesitlerle güldüren sıcak bir hikaye.",
+                tags: ["comedy", "sosyal"],
+                category: "comedy",
+                duration: "14:15",
+                thumbnail: "😄",
+                isFavorite: false,
+                inWatchlist: false
+            }
         ];
 
+        // DOM elements
         const themeToggle = document.getElementById('themeToggle');
         const searchInput = document.getElementById('searchInput');
         const videoGrid = document.getElementById('videoGrid');
         const videoModal = document.getElementById('videoModal');
         const closeModal = document.getElementById('closeModal');
-        const videoPlayer = document.getElementById('videoPlayer');
         const modalTitle = document.getElementById('modal-title');
         const modalDescription = document.getElementById('modal-description');
         cost filterBtns = document.querySelectorAll('.filter-btn');
         const loading = document.getElementById('loading');
 
+        // State
         let currentFilter = 'all';
         let searchQuery = '';
         let videos = [...videosData];
 
+        // Initialize app
         document.addEventListener('DOMContentLoaded', function() {
             initializeTheme();
             loadUserData();
@@ -602,6 +668,7 @@
             setupEventListeners();
         });
 
+        // Theme functions
         function initializeTheme() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
@@ -620,6 +687,7 @@
             themeToggle.textContent = theme === 'dark' ? '☀️ Açık Tema' : '🌙 Koyu Tema';
         }
 
+        // User data functions
         function loadUserData() {
             const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
             const watchlist = JSON.parse(localStorage.getItem('watchlist') || '[]');
@@ -636,35 +704,43 @@
             localStorage.setItem('watchlist', JSON.stringify(watchlist));
         }
 
+        // Video rendering functions
         function renderVideos() {
             showLoading();
             setTimeout(() => {
                 const filteredVideos = filterVideos();
                 videoGrid.innerHTML = '';
+                
                 if (filteredVideos.length === 0) {
-                    videoGrid.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-secondary);"><div style="font-size: 3rem; margin-bottom: 1rem;">🎬</div><h3>Film bulunamadı</h3><p>Arama kriterlerinize uygun film bulunamadı. Lütfen farklı anahtarkelimeler deneyin.</p></div>`;
+                    videoGrid.innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-secondary);">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🎬</div>
+                           <h3>Film bulunamadı</h3>
+                            <p>Arama kriterlerinize uygun film bulunamadı. Lütfen farklı anahtar kelimeler deneyin.</p>
+                        </div>
+                    `;
                     hideLoading();
                     return;
                 }
+
                 filteredVideos.forEach(video => {
                     const videoCard = createVideoCard(video);
                     videoGrid.appendChild(videoCard);
                 });
+                
                 hideLoading();
-            }, 500);
+            }, 300);
         }
 
         function createVideoCard(video) {
             const card = document.createElement('div');
             card.className = 'video-card';
-            card.setAttribute('role', 'gridcell');
             card.setAttribute('tabindex', '0');
-            card.setAttribute('aria-label', `${video.title} - ${video.duration}`);
             
             card.innerHTML = `
                 <div class="video-thumbnail">
                     <div class="thumbnail-placeholder">${video.thumbnail}</div>
-                    <div class="play-button" aria-hidden="true">▶</div>
+                    <div class="play-button">▶</div>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">${video.title}</h3>
@@ -673,25 +749,20 @@
                         ${video.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                     </div>
                     <div class="video-actions">
-                        <button class="action-btn favorite-btn ${video.isFavorite ? 'active' : ''}" data-id="${video.id}" aria-label="Favorilere Ekle/Çıkar">
+                        <button class="action-btn favorite-btn ${video.isFavorite ? 'active' : ''}" data-id="${video.id}">
                             ❤️ <span>${video.isFavorite ? 'Favorilerde' : 'Favorilere Ekle'}</span>
                         </button>
-                        <button class="action-btn watchlist-btn ${video.inWatchlist ? 'active' : ''}" data-id="${video.id}" aria-label="İzleme Listesine Ekle/Çıkar">
-                            📺 <span>${video.inWatchlist ? 'Lstede' : 'Listeye Ekle'}</span>
+                        <button class="action-btn watchlist-btn ${video.inWatchlist ? 'active' : ''}" data-id="${video.id}">
+                            📺 <span>${video.inWatchlist ? 'Listede' : 'Listeye Ekle'}</span>
                         </button>
                         <span style="color: var(--text-secondary); font-size: 0.9rem;">${video.duration}</span>
                     </div>
                 </div>
             `;
 
-            card.addEventListener('click', (e) => {
+            // Add event listeners
+            card.addEventListener(click', (e) => {
                 if (!e.target.closest('.action-btn')) {
-                    openVideoModal(video);
-                }
-            });
-
-            card.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter' && !e.target.closest('.action-btn')) {
                     openVideoModal(video);
                 }
             });
@@ -723,11 +794,80 @@
             });
         }
 
+        // Modal functions
+        function openVideoModal(video) {
+            modalTitle.textContent = video.title;
+            modalDescription.textContent = video.description;
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            videoModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // User action functions
+        function toggleFavorite(videoId) {
+            const video = videos.find(v => v.id === videoId);
+            if (video) {
+                video.isFavorite = !video.isFavorite;
+                saveUserData();
+                renderVideos();
+            }
+        }
+
+        function toggleWatchlist(videoId) {
+            const video = videos.find(v => v.id === videoId);
+            if (video) {
+                video.inWatchlist = !video.inWatchlist;
+                saveUserData();
+                renderVideos();
+            }
+        }
+
+        // Utility functions
+        function showLoading() {
+            loading.style.display = 'flex';
+        }
+
+        function hideLoading() {
+            loading.style.display = 'none';
+        }
+
+        // Event listeners setup
         function setupEventListeners() {
+            // Theme toggle
             themeToggle.addEventListener('click', toggleTheme);
+
+            // Search input
             searchInput.addEventListener('input', (e) => {
                 searchQuery = e.target.value;
                 renderVideos();
             });
 
-            filterBtn
+            // Filter buttons
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    e.target.classList.add('active');
+                    // Update current filter
+                    currentFilter = e.target.dataset.filter;
+                    // Re-render videos
+                    renderVideos();
+                });
+            });
+
+            // Modal close
+            closeModal.addEventListener('click', closeVideoModal);
+
+            // Close modal when clicking outside
+            videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) {
+                    closeVideoModal();
+                }
+            });
+
+            // Keyboard navigation
