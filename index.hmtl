@@ -4,264 +4,274 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IndieFilms TR — Bağımsız Kısa Filmler</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Türkiye'nin en iyi bağımsız kısa film platformu. Yaratıcı ve özgün kısa filmleri keşfedin.">
-    <meta name="keywords" content="kısa film, bağımsız film, indie film, türk sineması, film platformu">
-    <meta name="author" content="IndieFilms TR">
-    
-    <!-- Open Graph Meta Tags -->
+    <meta name="description" content="Türkiye'nin en iyi bağımsız kısa film platformu. Kaliteli, özgün içerikler keşfedin.">
+    <meta name="keywords" content="bağımsız film, kısa film, Türk sineması, indie films">
     <meta property="og:title" content="IndieFilms TR — Bağımsız Kısa Filmler">
-    <meta property="og:description" content="Türkiye'nin en iyi bağımsız kısa film platformu. Yaratıcı ve özgün kısa filmleri keşfedin.">
+    <meta property="og:description" content="Türkiye'nin en iyi bağımsız kısa film platformu">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourusername.github.io/indiefilms-tr">
+    <meta name="twitter:card" content="summary_large_image">
     
     <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent: #e50914;
+            --border: #e1e5e9;
+            --shadow: rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent: #e50914;
+            --border: #333333;
+            --shadow: rgba(0,0,0,0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #1f2937;
-            --accent-color: #3b82f6;
-            --text-primary: #111827;
-            --text-secondary: #6b7280;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --border-color: #e5e7eb;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        [data-theme="dark"] {
-            --primary-color: #f9fafb;
-            --accent-color: #60a5fa;
-            --text-primary: #f9fafb;
-            --text-secondary: #d1d5db;
-            --bg-primary: #111827;
-            --bg-secondary: #1f2937;
-            --border-color: #374151;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
 
         .header {
-            background-color: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-primary);
             padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(10px);
         }
 
-        .header-content {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
-            color: var(--accent-color);
+            color: var(--accent);
             text-decoration: none;
         }
 
         .theme-toggle {
             background: var(--bg-secondary);
-            border: 2px solid var(--border-color);
-            border-radius: 0.5rem;
-            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
             cursor: pointer;
-            transition: var(--transition);
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            z-index: 1000;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
 
         .theme-toggle:hover {
-            border-color: var(--accent-color);
+            background: var(--accent);
+            color: white;
         }
 
-        .search-filter-section {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+        .search-section {
+            padding: 2rem 0;
+            background: var(--bg-secondary);
         }
 
-        .search-container {
+        .search-bar {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
             position: relative;
-            margin-bottom: 1.5rem;
         }
 
         .search-input {
             width: 100%;
-            padding: 1rem 1rem 1rem 3rem;
-            border: 2px solid var(--border-color);
-            border-radius: 0.5rem;
-            background-color: var(--bg-secondary);
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            background: var(--bg-primary);
             color: var(--text-primary);
             font-size: 1rem;
         }
 
         .search-input:focus {
             outline: none;
-            border-color: var(--accent-color);
+            border-color: var(--accent);
         }
 
-        .search-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-        }
-
-        .filter-tags {
+        .filters {
             display: flex;
+            justify-content: center;
             flex-wrap: wrap;
             gap: 0.5rem;
         }
 
-        .filter-tag {
+        .filter-btn {
             padding: 0.5rem 1rem;
-            background-color: var(--bg-secondary);
-            border: 2px solid var(--border-color);
-            border-radius: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
             cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
-        .filter-tag:hover,
-        .filter-tag.active {
-            background-color: var(--accent-color);
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
             color: white;
-            border-color: var(--accent-color);
+            border-color: var(--accent);
+        }
+
+        .main-content {
+            padding: 2rem 0;
+            min-height: 50vh;
         }
 
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .video-card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
             overflow: hidden;
-            transition: var(--transition);
             cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
         }
 
         .video-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
         }
 
         .video-thumbnail {
             width: 100%;
             height: 200px;
-            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(45deg, var(--accent), #ff6b6b);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thumbnail-placeholder {
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            position: relative;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.8);
         }
 
         .play-button {
             position: absolute;
-            background: rgba(0, 0, 0, 0.7);
-            border: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(0,0,0,0.7);
             border-radius: 50%;
-            width: 4rem;
-            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
             font-size: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .play-button:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: scale(1.1);
+        .video-card:hover .play-button {
+            opacity: 1;
         }
 
         .video-info {
-            padding: 1rem;
+            padding: 1.5rem;
         }
 
         .video-title {
-            font-size: 1.125rem;
+            font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
 
         .video-description {
             color: var(--text-secondary);
-            font-size: 0.875rem;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
+            line-height: 1.4;
         }
 
         .video-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.25rem;
-            margin-bottom: 1rem;
+            gap: 0.5rem;
         }
 
-        .video-tag {
-            background-color: var(--accent-color);
+        .tag {
+            background: var(--accent);
             color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
         }
 
         .video-actions {
             display: flex;
-            gap: 0.5rem;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
         }
 
-        .action-button {
-            padding: 0.5rem;
-            border: 1px solid var(--border-color);
-            border-radius: 0.25rem;
+        .action-btn {
             background: none;
+            border: none;
             color: var(--text-secondary);
             cursor: pointer;
-            transition: var(--transition);
-            flex: 1;
-            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
-        .action-button:hover {
-            color: var(--accent-color);
-            border-color: var(--accent-color);
+        .action-btn:hover {
+            background: var(--bg-primary);
+            color: var(--accent);
         }
 
-        .action-button.active {
-            background-color: var(--accent-color);
-            color: white;
-            border-color: var(--accent-color);
+        .action-btn.active {
+            color: var(--accent);
         }
 
         .modal {
@@ -271,9 +281,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0,0,0,0.9);
             z-index: 1000;
-            padding: 1rem;
+            padding: 2rem;
         }
 
         .modal.active {
@@ -283,96 +293,114 @@
         }
 
         .modal-content {
-            max-width: 900px;
-            width: 100%;
             background: var(--bg-primary);
-            border-radius: 0.5rem;
-            overflow: hidden;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
         }
 
         .modal-header {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .close-button {
+        .close-btn {
             background: none;
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text-secondary);
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: var(--bg-secondary);
+            color: var(--accent);
         }
 
         .video-player {
             width: 100%;
-            height: auto;
-            max-height: 500px;
+            height: 400px;
+            background: #000;
         }
 
-        .modal-info {
-            padding: 1rem;
+        .modal-body {
+            padding: 1.5rem;
         }
 
-        .video-controls {
-            display: flex;
-            gap: 0.5rem;
+        .user-section {
+            background: var(--bg-secondary);
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .user-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
             margin-top: 1rem;
         }
 
-        .control-button {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 0.25rem;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            cursor: pointer;
+        .feature-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
         }
 
-        .control-button:hover {
-            background: var(--accent-color);
-            color: white;
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
         }
 
         .readme-section {
-            max-width: 1200px;
-            margin: 4rem auto 2rem;
-            padding: 0 1rem;
-        }
-
-        .readme-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
+            background: var(--bg-primary);
             padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
         }
 
-        .readme-title {
-            font-size: 1.5rem;
-            font-weight: 600;
+        .readme-section h3 {
+            color: var(--accent);
             margin-bottom: 1rem;
         }
 
-        .readme-steps {
+        .steps {
             list-style: none;
+            padding-left: 0;
             counter-reset: step-counter;
         }
 
-        .readme-steps li {
-            counter-increment: step-counter;
-            margin-bottom: 1rem;
-            padding-left: 2rem;
+        .steps li {
+            padding: 0.5rem 0;
             position: relative;
+            padding-left: 2rem;
         }
 
-        .readme-steps li::before {
+        .steps li:before {
             content: counter(step-counter);
+            counter-increment: step-counter;
             position: absolute;
             left: 0;
-            top: 0;
-            background: var(--accent-color);
+            background: var(--accent);
             color: white;
             width: 1.5rem;
             height: 1.5rem;
@@ -380,330 +408,326 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
 
-        .footer {
-            text-align: center;
-            padding: 2rem 1rem;
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
             color: var(--text-secondary);
-            border-top: 1px solid var(--border-color);
-            margin-top: 4rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
             .video-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
-            .modal {
-                padding: 0.5rem;
+            .modal { padding: 1rem; }
+            .video-player { height: 250px; }
+            .filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
             }
+            .filter-btn { white-space: nowrap; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 0.5rem; }
+            .logo { font-size: 1.5rem; }
+            .video-info { padding: 1rem; }
+        }
+
+        button:focus, input:focus, .video-card:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <button class="theme-toggle" id="themeToggle">
-        <span id="themeIcon">🌙</span>
-    </button>
-
-    <header class="header">
-        <div class="header-content">
-            <a href="#" class="logo">IndieFilms TR</a>
-            <span style="color: var(--text-secondary);">Bağımsız Kısa Filmler</span>
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo" aria-label="IndieFilms TR Ana Sayfa">IndieFilms TR</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Tema Değiştir">🌙 Koyu Tema</button>
+            </div>
         </div>
     </header>
 
-    <section class="search-filter-section">
-        <div class="search-container">
-            <input type="search" class="search-input" id="searchInput" placeholder="Film ara...">
-            <span class="search-icon">🔍</span>
-        </div>
-        
-        <div class="filter-tags">
-            <button class="filter-tag active" data-category="all">Tümü</button>
-            <button class="filter-tag" data-category="drama">Kısa Dram</button>
-            <button class="filter-tag" data-category="experimental">Deneysel</button>
-            <button class="filter-tag" data-category="animation">Animasyon</button>
-            <button class="filter-tag" data-category="comedy">Komedi</button>
-            <button class="filter-tag" data-category="documentary">Belgesel</button>
+    <section class="search-section" role="search">
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Film ara..." id="searchInput" aria-label="Film Arama">
+            </div>
+            <div class="filters" role="group" aria-label="Kategori Filtreleri">
+                <button class="filter-btn active" data-filter="all">Tümü</button>
+                <button class="filter-btn" data-filter="drama">Kısa Dram</button>
+                <button class="filter-btn" data-filter="experimental">Deneysel</button>
+                <button class="filter-btn" data-filter="animation">Animasyon</button>
+                <button class="filter-btn" data-filter="documentary">Belgesel</button>
+                <button class="filter-btn" data-filter="comedy">Komedi</button>
+            </div>
         </div>
     </section>
 
-    <main class="video-grid" id="videoGrid"></main>
+    <main class="main-content" role="main">
+        <div class="container">
+            <div class="video-grid" id="videoGrid" role="grid"></div>
+            <div class="loading" id="loading" style="display: none;" role="status" aria-label="Yükleniyor">
+                <div class="spinner"></div>Videolar yükleniyor...
+            </div>
+        </div>
+    </main>
 
-    <div class="modal" id="videoModal">
+    <section class="user-section" role="region" aria-labelledby="user-features-title">
+        <div class="container">
+            <h2 id="user-features-title" style="text-align: center; margin-bottom: 2rem;">Platform Özellikleri</h2>
+            <div class="user-features">
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Favori Listesi</h3>
+                    <p>Beğendiğiniz filmleri favori listenize ekleyin ve kolayca erişin.</p>
+                    <button class="action-btn" style="margin-top: 1rem;"><span>Favoriler</span></button>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📺</div>
+                    <h3>İzleme Listesi</h3>
+                   <p>Daha sonra izlemek istediğiniz filmleri listenize ekleyin.</p>
+                    <button class="action-btn" style="margin-top: 1rem;"><span>İzleme Listesi</span></button>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3>Kullanıcı Profili</h3>
+                    <p>Kişisel profilinizi oluşturun ve izleme geçmişinizi takip edin.</p>
+                    <button class="action-btn" style="margin-top: 1rem;"><span>Profil (Mock)</span></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="videoModal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="modalTitle">Film Başlığı</h2>
-                <button class="close-button" id="closeModal">&times;</button>
+                <h2 id="modal-title">Film Başlığı</h2>
+                <button class="close-btn" id="closeModal" aria-label="Modalı Kapat">×</button>
             </div>
-            <video class="video-player" id="videoPlayer" controls>
+            <video class="video-player" id="videoPlayer" controls crossorigin="anonymous" aria-label="Video Oynatıcı">
                 <source src="" type="video/mp4">
-                <track kind="subtitles" src="data:text/vtt;base64,V0VCVlRUCgowMDowMDowMC4wMDAgLS0+IDAwOjAwOjA1LjAwMApTZWxhbSEgQnUgYmlyIG9ybmVrIGFsdHlhesSxZMSxci4KCjAwOjAwOjA1LjAwMCAtLT4gMDA6MDA6MTAuMDAwCkJ1IGZpbG0gYmHFn2xhbcSxxZ90xLEuCgowMDowMDoxMC4wMDAgLS0+IDAwOjAwOjE1LjAwMApJeWkgc2V5cmVkZXIh" srclang="tr" label="Türkçe" default>
+                <track kind="subtitles" src="" srclang="tr" label="Türkçe" default>
+                Tarayıcınız video etiketini desteklemiyor.
             </video>
-            <div class="modal-info">
-                <p id="videoDescription">Film açıklaması buraya gelecek.</p>
-                <div class="video-controls">
-                    <button class="control-button" id="toggleSubtitles">Altyazı Aç/Kapat</button>
-                    <button class="control-button" id="fullscreenBtn">Tam Ekran</button>
+            <div class="modal-body">
+                <p id="modal-description">Film açıklaması burada görünecek.</p>
+                <div class="video-actions">
+                    <button class="action-btn"id="modalFavorite" aria-label="Favorilere Ekle">❤️ <span>Favorilere Ekle</span></button>
+                    <button class="action-btn" id="modalWatchlist" aria-label="İzleme Listesine Ekle">📺 <span>İzleme Listesi</span></button>
+                    <button class="action-btn" id="modalShare" aria-lael="Paylaş">🔗 <span>Paylaş</span></button>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="readme-section">
-        <div class="readme-card">
-            <h2 class="readme-title">🚀 GitHub Pages'e Nasıl Yüklenir?</h2>
-            <ol class="readme-steps">
-                <li>GitHub hesabınızda yeni bir repository oluşturun (örn: indiefilms-tr)</li>
-                <li>Bu index.html dosyasını repository'nize yükleyin</li>
-                <li>Repository ayarlarından Pages bölümüne gidin</li>
-                <li>Source olarak "Deploy from a branch" seçin</li>
-                <li>Branch olarak "main" ve folder olarak "/ (root)" seçin</li>
-                <li>Save butonuna tıklayın ve sitenizin URL'sini bekleyin</li>
-            </ol>
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="readme-section">
+                <h3>GiHub Pages'e Nasıl Yüklenir?</h3>
+                <ol class="steps">
+                    <li>GitHub hesabınızda yeni bir repository oluşturun</li>
+                    <li>Repository'ye bu index.html dosyasını yükleyin</li>
+                    <li>Repository Settings > Pages bölümüne gidin</li>
+                    <li>Source olarak "Deploy from a branch" seçin</li>
+                    <li>Branch olarak "main" veya "master" seçin</li>
+                    <li>Save butonuna tıklayın ve sitenizin URL'sini kopyalayın</li>
+                </ol>
+                <p><strong>KULLANIM:</strong> GitHub repository'ye index.html olarak ekle, Pages aktif et.</p>
+            </div>
+            <div style="text-align: center; color: var(--text-secondary);">
+                <p>&copy; 2024 IndieFilms TR. Tüm hakları saklıdır.</p>
+                <p>Bağımsız kısa filmler için profesyonel platform şablonu</p>
+            </div>
         </div>
-    </section>
-
-    <footer class="footer">
-        <p>&copy; 2024 IndieFilms TR. Bağımsız kısa filmleri destekliyoruz.</p>
-        <p><strong>KULLANIM:</strong> GitHub repository'ye index.html olarak ekle, Pages aktif et.</p>
     </footer>
 
     <script>
-        const videoData = [
-            {
-                id: 1,
-                title: "Kayıp Anılar",
-                description: "Bir adamın geçmişiyle yüzleşme hikayesi. Derin ve etkileyici bir kısa dram filmi.",
-                category: "drama",
-                tags: ["dram", "psikolojik", "2024"],
-                thumbnail: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23667eea'/%3E%3Ctext x='200' y='120' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EKayıp Anılar%3C/text%3E%3C/svg%3E",
-                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-                duration: "12:30"
-            },
-            {
-                id: 2,
-                title: "Renklerin Dansı",
-                description: "Soyut sanat ve müziğin buluştuğu deneysel bir animasyon filmi.",
-                category: "animation",
-                tags: ["animasyon", "deneysel", "sanat"],
-                thumbnail: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23764ba2'/%3E%3Ctext x='200' y='120' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3ERenklerin Dansı%3C/text%3E%3C/svg%3E",
-                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-                duration: "8:45"
-            },
-            {
-                id: 3,
-                title: "Gülmece",
-                description: "Günlük hayatın komik yanlarını ele alan eğlenceli bir kısa film.",
-                category: "comedy",
-                tags: ["komedi", "mizah", "gündelik"],
-                thumbnail: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23f093fb'/%3E%3Ctext x='200' y='120' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EGülmece%3C/text%3E%3C/svg%3E",
-                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-                duration: "15:22"
-            },
-            {
-                id: 4,
-                title: "Sessizliğin Sesi",
-                description: "İşitme engelli bir müzisyenin hayat mücadelesi. Dokunaklı bir belgesel.",
-                category: "documentary",
-                tags: ["belgesel", "sosyal", "müzik"],
-                thumbnail: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%2343cea2'/%3E%3Ctext x='200' y='120' font-family='Arial' font-size='18' fill='white' text-anchor='middle'%3ESessizliğin Sesi%3C/text%3E%3C/svg%3E",
-                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-                duration: "22:10"
-            },
-            {
-                id: 5,
-                title: "Zaman Kırılması",
-                description: "Zamanın doğrusal olmadığını keşfeden bir bilim insanının hikayesi.",
-                category: "experimental",
-                tags: ["sci-fi", "deneysel", "zaman"],
-                thumbnail: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23185a9d'/%3E%3Ctext x='200' y='120' font-family='Arial' font-size='18' fill='white' text-anchor='middle'%3EZaman Kırılması%3C/text%3E%3C/svg%3E",
-                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
-                duration: "18:33"
-            },
-            {
-                id: 6,
-                title: "Son Mektup",
-                description: "Aşk, kayıp ve umut üzerine poetik bir kısa film.",
-                category: "drama",
-                tags: ["romantik", "dram", "şiir"],
-                thumbnail: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23ff6b6b'/%3E%3Ctext x='200' y='120' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3ESon Mektup%3C/text%3E%3C/svg%3E",
-                videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
-                duration: "14:20"
-            }
+        const videosData = [
+            {id: 1, title: "Gecenin Sessizliği", description: "Şehrin karanlık sokaklarında geçen psikolojik bir dram. Yalnızlık ve umut arasındaki ince çizgiyi keşfeden etkileyici bir hikaye.", tags: ["drama", "psikolojik"], category: "drama", duration: "12:45", thumbnail: "🎬", videoUrl: "", subtitles: "", isFavorite: false, inWatchlist: false},
+            {id: 2, title: "Renklerin Dansı", description: "Soyut animasyon teknikleriyle yaratılmış gösel bir şölen. Müzik ve renklerin mükemmel uyumu ile büyüleyici bir deneyim.", tags: ["animation", "deneysel"], category: "animation", duration: "08:30", thumbnail: "🎨", videoUrl: "", subtitles: "", isFavorite: false, inWatchlist: false},
+            {id: 3 title: "Zaman Kırılması", description: "Deneysel anlatım teknikleriyle kurgulanmış bir bilim kurgu hikayesi. Zamanın doğrusal olmayan yapısını sorgulayan cesur bir yaklaşım.", tags: ["experimental", "sci-fi"], category: "experimental", duration: "15:20", thumbnail: "🌌", videoUrl: "", subtitles: "", isFavorite: true, inWatchlist: false},
+            {id: 4, title:"Kayıp Anılar", description: "Yaşlılık ve hafıza kaybı temasını işleyen dokunaklı bir hikaye. İnsan zihninin karmaşıklığını anlatan duygusal bir yolculuk.", tags: ["drama", "aile"], category: "drama", duration: "18:45", thumbnail: "🧠", videoUrl: "", subtitles: "", isFavorite: false, inWatchlist: true},
+            {id: 5, title: "Sokak Müzisyenleri", description: "İstanbul'un sokak müzisyenlerini konu alan belgesel tarzı bir film. Sanatın hayatta kalma mücadelesini gözler önüne seriyor.", tags: ["documentary", "müzik"], category: "documentary", duration: "22:10", thmbnail: "🎵", videoUrl: "", subtitles: "", isFavorite: false, inWatchlist: false},
+            {id: 6, ttle: "Komşu Kapıları", description: "Apartman hayatının komik yanlarını konu alan neşeli bir komedi. Gündelik hayattan kesitlerle güldüren sıcak bir hikaye.", tags: ["comedy", "sosyal"], category: "comedy", duration: "14:15", thumbnail: "😄", videoUrl: "", subtitles: "", isFavorite: false, inWatchlist: false}
         ];
 
-        let currentFilter = 'all';
-        let searchTerm = '';
-        let favorites = JSON.parse(localStorage.getItem('indiefilms-favorites') || '[]');
-        let watchlist = JSON.parse(localStorage.getItem('indiefilms-watchlist') || '[]');
-
         const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
         const searchInput = document.getElementById('searchInput');
         const videoGrid = document.getElementById('videoGrid');
         const videoModal = document.getElementById('videoModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const videoPlayer = document.getElementById('videoPlayer');
-        const videoDescription = document.getElementById('videoDescription');
         const closeModal = document.getElementById('closeModal');
-        const toggleSubtitles = document.getElementById('toggleSubtitles');
-        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        cost filterBtns = document.querySelectorAll('.filter-btn');
+        const loading = document.getElementById('loading');
 
-        function init() {
-            setupEventListeners();
-            loadTheme();
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let videos = [...videosData];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTheme();
+            loadUserData();
             renderVideos();
-        }
+            setupEventListeners();
+        });
 
-        function setupEventListeners() {
-            themeToggle.addEventListener('click', toggleTheme);
-            searchInput.addEventListener('input', handleSearch);
-            closeModal.addEventListener('click', closeVideoModal);
-            toggleSubtitles.addEventListener('click', handleSubtitles);
-            fullscreenBtn.addEventListener('click', handleFullscreen);
-
-            document.querySelectorAll('.filter-tag').forEach(tag => {
-                tag.addEventListener('click', handleFilterClick);
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && videoModal.classList.contains('active')) {
-                    closeVideoModal();
-                }
-            });
-
-            videoModal.addEventListener('click', (e) => {
-                if (e.target === videoModal) {
-                    closeVideoModal();
-                }
-            });
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeButton(savedTheme);
         }
 
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
             document.documentElement.setAttribute('data-theme', newTheme);
-            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-            localStorage.setItem('indiefilms-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeButton(newTheme);
         }
 
-        function loadTheme() {
-            const savedTheme = localStorage.getItem('indiefilms-theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        function updateThemeButton(theme) {
+            themeToggle.textContent = theme === 'dark' ? '☀️ Açık Tema' : '🌙 Koyu Tema';
         }
 
-        function handleSearch(e) {
-            searchTerm = e.target.value.toLowerCase();
-            renderVideos();
-        }
-
-        function handleFilterClick(e) {
-            document.querySelectorAll('.filter-tag').forEach(tag => {
-                tag.classList.remove('active');
+        function loadUserData() {
+            const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            const watchlist = JSON.parse(localStorage.getItem('watchlist') || '[]');
+           videos.forEach(video => {
+                video.isFavorite = favorites.includes(video.id);
+                video.inWatchlist = watchlist.includes(video.id);
             });
-            e.target.classList.add('active');
-            currentFilter = e.target.getAttribute('data-category');
-            renderVideos();
+        }
+
+        function saveUserData() {
+            const favorites = videos.filter(v => v.isFavorite).map(v => v.id);
+            const watchlist = videos.filter(v => v.inWatchlist).map(v => v.id);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            localStorage.setItem('watchlist', JSON.stringify(watchlist));
         }
 
         function renderVideos() {
-            const filteredVideos = videoData.filter(video => {
-                const matchesCategory = currentFilter === 'all' || video.category === currentFilter;
-                const matchesSearch = video.title.toLowerCase().includes(searchTerm) || 
-                                    video.description.toLowerCase().includes(searchTerm) ||
-                                    video.tags.some(tag => tag.toLowerCase().includes(searchTerm));
-                return matchesCategory && matchesSearch;
-            });
+            showLoading();
+            setTimeout(() => {
+                const filteredVideos = filterVideos();
+                videoGrid.innerHTML = '';
+                if (filteredVideos.length === 0) {
+                    videoGrid.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-secondary);"><div style="font-size: 3rem; margin-bottom: 1rem;">🎬</div><h3>Film bulunamadı</h3><p>Arama kriterlerinize uygun film bulunamadı. Lütfen farklı anahtarkelimeler deneyin.</p></div>`;
+                    hideLoading();
+                    return;
+                }
+                filteredVideos.forEach(video => {
+                    const videoCard = createVideoCard(video);
+                    videoGrid.appendChild(videoCard);
+                });
+                hideLoading();
+            }, 500);
+        }
 
-            videoGrid.innerHTML = filteredVideos.map(video => `
-                <div class="video-card" onclick="openVideoModal(${video.id})">
-                    <div class="video-thumbnail" style="background-image: url('${video.thumbnail}'); background-size: cover;">
-                        <button class="play-button" onclick="event.stopPropagation(); openVideoModal(${video.id})">▶</button>
+        function createVideoCard(video) {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.setAttribute('role', 'gridcell');
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('aria-label', `${video.title} - ${video.duration}`);
+            
+            card.innerHTML = `
+                <div class="video-thumbnail">
+                    <div class="thumbnail-placeholder">${video.thumbnail}</div>
+                    <div class="play-button" aria-hidden="true">▶</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">${video.title}</h3>
+                    <p class="video-description">${video.description}</p>
+                    <div class="video-tags">
+                        ${video.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                     </div>
-                    <div class="video-info">
-                        <h3 class="video-title">${video.title}</h3>
-                        <p class="video-description">${video.description}</p>
-                        <div class="video-tags">
-                            ${video.tags.map(tag => `<span class="video-tag">${tag}</span>`).join('')}
-                        </div>
-                        <div class="video-actions">
-                            <button class="action-button ${favorites.includes(video.id) ? 'active' : ''}" 
-                                    onclick="event.stopPropagation(); toggleFavorite(${video.id})">
-                                ❤ Favori
-                            </button>
-                            <button class="action-button ${watchlist.includes(video.id) ? 'active' : ''}" 
-                                    onclick="event.stopPropagation(); toggleWatchlist(${video.id})">
-                                📝 Liste
-                            </button>
-                        </div>
+                    <div class="video-actions">
+                        <button class="action-btn favorite-btn ${video.isFavorite ? 'active' : ''}" data-id="${video.id}" aria-label="Favorilere Ekle/Çıkar">
+                            ❤️ <span>${video.isFavorite ? 'Favorilerde' : 'Favorilere Ekle'}</span>
+                        </button>
+                        <button class="action-btn watchlist-btn ${video.inWatchlist ? 'active' : ''}" data-id="${video.id}" aria-label="İzleme Listesine Ekle/Çıkar">
+                            📺 <span>${video.inWatchlist ? 'Lstede' : 'Listeye Ekle'}</span>
+                        </button>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">${video.duration}</span>
                     </div>
                 </div>
-            `).join('');
+            `;
+
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.action-btn')) {
+                    openVideoModal(video);
+                }
+            });
+
+            card.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.target.closest('.action-btn')) {
+                    openVideoModal(video);
+                }
+            });
+
+            const favoriteBtn = card.querySelector('.favorite-btn');
+            const watchlistBtn = card.querySelector('.watchlist-btn');
+
+            favoriteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleFavorite(video.id);
+            });
+
+            watchlistBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleWatchlist(video.id);
+            });
+
+            return card;
         }
 
-        function openVideoModal(videoId) {
-            const video = videoData.find(v => v.id === videoId);
-            if (!video) return;
-
-            modalTitle.textContent = video.title;
-            videoDescription.textContent = video.description;
-            videoPlayer.querySelector('source').src = video.videoUrl;
-            videoPlayer.load();
-            
-            videoModal.classList.add('active');
+        function filterVideos() {
+            return videos.filter(video => {
+                const matchesFilter = currentFilter === 'all' || video.category === currentFilter;
+                const matchesSearch = searchQuery === '' || 
+                    video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    video.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    video.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+                return matchesFilter && matchesSearch;
+            });
         }
 
-        function closeVideoModal() {
-            videoModal.classList.remove('active');
-            videoPlayer.pause();
-            videoPlayer.currentTime = 0;
-        }
+        function setupEventListeners() {
+            themeToggle.addEventListener('click', toggleTheme);
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                renderVideos();
+            });
 
-        function toggleFavorite(videoId) {
-            const index = favorites.indexOf(videoId);
-            if (index > -1) {
-                favorites.splice(index, 1);
-            } else {
-                favorites.push(videoId);
-            }
-            localStorage.setItem('indiefilms-favorites', JSON.stringify(favorites));
-            renderVideos();
-        }
-
-        function toggleWatchlist(videoId) {
-            const index = watchlist.indexOf(videoId);
-            if (index > -1) {
-                watchlist.splice(index, 1);
-            } else {
-                watchlist.push(videoId);
-            }
-            localStorage.setItem('indiefilms-watchlist', JSON.stringify(watchlist));
-            renderVideos();
-        }
-
-        function handleSubtitles() {
-            const track = videoPlayer.querySelector('track');
-            if (track) {
-                track.mode = track.mode === 'showing' ? 'hidden' : 'showing';
-            }
-        }
-
-        function handleFullscreen() {
-            if (videoPlayer.requestFullscreen) {
-                videoPlayer.requestFullscreen();
-            } else if (videoPlayer.webkitRequestFullscreen) {
-                videoPlayer.webkitRequestFullscreen();
-            } else if (videoPlayer.msRequestFullscreen) {
-                videoPlayer.msRequestFullscreen();
-            }
-        }
-
-        init();
-    </script>
-</body>
-</html>
+            filterBtn
