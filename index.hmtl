@@ -1,370 +1,1736 @@
 <!doctype html>
-<html lang="tr" data-theme="light">
+<html
+  lang="tr"
+  data-theme="light"
+  data-contrast="normal"
+  data-motion="auto"
+>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Erhan Hub — 18+ Film Platformu (Demo)</title>
-<meta name="description" content="Erhan Hub, 18+ yetişkin film platformu için kurumsal bir DEMO şablondur. Gerçek içerik barındırmaz. isFamilyFriendly:false">
-<meta name="robots" content="noimageai">
-<meta name="rating" content="adult">
-<meta name="theme-color" content="#0f172a">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Erhan Hub — 18+ Film Platformu (Demo)">
-<meta property="og:description" content="18+ (DEMO) platform şablonu: arama, kategoriler, ızgara, modal oynatıcı, sayfalama, tema anahtarı ve yaş/cookie onayı.">
-<meta property="og:site_name" content="Erhan Hub">
-<script type="application/ld+json">{
- "@context":"https://schema.org",
- "@type":"WebSite",
- "name":"Erhan Hub",
- "url":"https://example.invalid/",
- "description":"18+ yetişkin film platformu DEMO şablonu. Gerçek içerik barındırmaz.",
- "isFamilyFriendly":false,
- "inLanguage":"tr-TR",
- "potentialAction":{"@type":"SearchAction","target":"https://example.invalid/?q={search_term_string}","query-input":"required name=search_term_string"}
-}</script>
-<style>
-:root{
-  --bg:#0b1020;--fg:#e5e7eb;--muted:#94a3b8;--card:#121a33;--chip:#1f2a4a;--accent:#22d3ee;--accent-2:#a78bfa;--warn:#f59e0b;--ok:#34d399;--error:#ef4444;--focus:#fbbf24;--border:#2b355a;
-  --shadow:0 4px 18px rgba(0,0,0,.25);
-  --radius:14px;--radius-sm:10px;--maxw:1200px;
-  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-}
-html[data-theme="light"]{
-  --bg:#ffffff;--fg:#0f172a;--muted:#475569;--card:#f1f5f9;--chip:#e2e8f0;--accent:#0ea5e9;--accent-2:#7c3aed;--warn:#b45309;--ok:#047857;--error:#b91c1c;--focus:#1d4ed8;--border:#cbd5e1;--shadow:0 4px 18px rgba(2,6,23,.08);
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 var(--font);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-a{color:inherit}
-button{font:inherit}
-.container{max-width:var(--maxw);margin-inline:auto;padding:16px}
-.skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-.skip:focus{left:16px;top:16px;width:auto;height:auto;background:var(--focus);color:#000;padding:8px 12px;border-radius:8px;outline:3px solid #000}
-header.sticky{position:sticky;top:0;background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0));z-index:30;backdrop-filter:saturate(150%) blur(6px)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);background:color-mix(in srgb, var(--bg) 88%, transparent)}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{inline-size:36px;block-size:36px;border-radius:10px;background:conic-gradient(from 200deg,var(--accent),var(--accent-2));box-shadow:var(--shadow)}
-.brand h1{font-size:18px;margin:0;letter-spacing:.3px}
-.actions{display:flex;gap:8px}
-.btn{border:1px solid var(--border);background:var(--chip);color:var(--fg);padding:10px 14px;border-radius:12px;cursor:pointer}
-.btn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.btn.primary{background:var(--accent);color:#001018;border-color:transparent}
-.btn.ghost{background:transparent}
-.searchbar{display:grid;grid-template-columns:1fr auto;gap:10px;padding-block:14px}
-.input{border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--fg);padding:12px 14px;width:100%}
-.input:focus{outline:3px solid var(--focus)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{background:var(--chip);border:1px solid var(--border);color:var(--fg);padding:8px 12px;border-radius:999px;cursor:pointer}
-.chip[aria-pressed="true"]{outline:3px solid var(--accent);background:color-mix(in srgb,var(--chip) 60%, var(--accent) 40%)}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:1024px){.grid{grid-template-columns:repeat(5,1fr)}}
-.card{border:1px solid var(--border);background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
-.thumb{aspect-ratio:16/9;width:100%;display:block;background:var(--chip)}
-.meta{padding:10px 12px;display:grid;gap:8px}
-.title{margin:0;font-weight:600;font-size:14px}
-.badges{display:flex;gap:6px;flex-wrap:wrap}
-.badge{font-size:12px;background:var(--chip);border:1px solid var(--border);padding:4px 8px;border-radius:999px}
-.row{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}
-.play{margin:10px 12px 12px}
-.play .btn{width:100%}
-.duration{position:absolute;right:8px;bottom:8px;background:#000c;color:#fff;padding:3px 6px;border-radius:8px;font-size:12px}
-.thumb-wrap{position:relative}
-.pagination{display:flex;justify-content:center;gap:8px;padding:18px}
-footer{border-top:1px solid var(--border);margin-top:20px}
-.footer-inner{display:grid;gap:10px;padding:16px;color:var(--muted)}
-.footer-links{display:flex;flex-wrap:wrap;gap:12px}
-dialog#player{border:none;border-radius:16px;max-width:min(960px,96vw);padding:0;box-shadow:var(--shadow);background:var(--card);color:var(--fg)}
-dialog::backdrop{background:rgba(0,0,0,.6)}
-.player-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--border)}
-.player-body{padding:12px 14px}
-.player-video{width:100%;aspect-ratio:16/9;background:var(--chip);border:1px solid var(--border);border-radius:12px}
-.notice{padding:8px 10px;background:var(--chip);border:1px dashed var(--border);border-radius:10px;margin-top:10px}
-.overlay{position:fixed;inset:0;background:rgba(2,6,23,.78);backdrop-filter:blur(6px);display:grid;place-items:center;z-index:60}
-.overlay-card{background:var(--card);border:1px solid var(--border);border-radius:20px;max-width:520px;padding:18px;box-shadow:var(--shadow)}
-.overlay h2{margin:0 0 8px}
-.overlay p{margin:0 0 12px;color:var(--muted)}
-.overlay .row{justify-content:flex-end}
-.cookie{position:fixed;left:12px;right:12px;bottom:12px;z-index:40}
-.cookie .overlay-card{max-width:680px;margin-inline:auto}
-.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-hr.sep{border:none;border-top:1px solid var(--border);margin:12px 0}
-.small{font-size:12px}
-</style>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+  <title>
+    Erhan Hub — 18+ Film Platformu (Demo)
+  </title>
+  <meta
+    name="description"
+    content="Erhan Hub, 18+ yetişkin film platformu için KURUMSAL bir DEMO şablondur. Gerçek içerik barındırmaz. isFamilyFriendly:false"
+  >
+  <meta
+    name="rating"
+    content="adult"
+  >
+  <meta
+    name="robots"
+    content="index,follow"
+  >
+  <meta
+    name="theme-color"
+    content="#0f172a"
+    media="(prefers-color-scheme: dark)"
+  >
+  <meta
+    name="theme-color"
+    content="#ffffff"
+    media="(prefers-color-scheme: light)"
+  >
+  <meta
+    property="og:type"
+    content="website"
+  >
+  <meta
+    property="og:title"
+    content="Erhan Hub — 18+ Film Platformu (Demo)"
+  >
+  <meta
+    property="og:description"
+    content="18+ (DEMO) şablon: arama, kategori çipleri, ızgara, erişilebilir modal oynatıcı, sayfalama, tema/kontrast anahtarları, yaş ve çerez onayı."
+  >
+  <meta
+    property="og:site_name"
+    content="Erhan Hub"
+  >
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Erhan Hub",
+    "url": "https://example.invalid/",
+    "description": "18+ yetişkin film platformu DEMO şablonu. Gerçek içerik barındırmaz.",
+    "isFamilyFriendly": false,
+    "inLanguage": "tr-TR",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://example.invalid/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg:           #0b1020;
+      --fg:           #e5e7eb;
+      --muted:        #94a3b8;
+      --card:         #121a33;
+      --chip:         #1f2a4a;
+      --accent:       #22d3ee;
+      --accent-2:     #a78bfa;
+      --focus:        #fbbf24;
+      --border:       #2b355a;
+      --danger:       #ef4444;
+      --ok:           #22c55e;
+      --warn:         #f59e0b;
+
+      --shadow-1:     0 1px 2px rgba(0,0,0,.25);
+      --shadow-2:     0 4px 18px rgba(0,0,0,.25);
+
+      --r-xs:         8px;
+      --r-sm:         10px;
+      --r-md:         14px;
+      --r-lg:         20px;
+
+      --gap-1:        6px;
+      --gap-2:        10px;
+      --gap-3:        12px;
+      --gap-4:        16px;
+      --gap-5:        20px;
+
+      --maxw:         1200px;
+
+      --font: -apple-system,
+               BlinkMacSystemFont,
+               "Segoe UI",
+               Roboto,
+               Ubuntu,
+               "Helvetica Neue",
+               Arial,
+               "Noto Sans",
+               sans-serif;
+
+      --outline-w:    3px;
+      --outline-off:  2px;
+
+      --trans-1:      120ms ease;
+      --trans-2:      200ms ease;
+    }
+
+    html[data-theme="light"] {
+      --bg:       #ffffff;
+      --fg:       #0f172a;
+      --muted:    #475569;
+      --card:     #f1f5f9;
+      --chip:     #e2e8f0;
+      --accent:   #0ea5e9;
+      --accent-2: #7c3aed;
+      --focus:    #1d4ed8;
+      --border:   #cbd5e1;
+      --shadow-2: 0 4px 18px rgba(2,6,23,.08);
+    }
+
+    html[data-contrast="high"] {
+      --fg:       #ffffff;
+      --bg:       #000000;
+      --card:     #0a0a0a;
+      --chip:     #101010;
+      --border:   #ffffff;
+      --focus:    #00ffff;
+    }
+
+    @media (prefers-contrast: more) {
+      :root {
+        --focus: #00ffff;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      :root {
+        --trans-1: 0ms;
+        --trans-2: 0ms;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.5 var(--font);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: var(--outline-w) solid var(--focus);
+      outline-offset: var(--outline-off);
+      transition: outline-color var(--trans-1);
+    }
+
+    .container {
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding: var(--gap-4);
+    }
+
+    /* Skip link */
+    .skip {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip:focus {
+      left: 16px;
+      top: 16px;
+      width: auto;
+      height: auto;
+      background: var(--focus);
+      color: #000;
+      padding: 8px 12px;
+      border-radius: var(--r-sm);
+      outline: var(--outline-w) solid #000;
+    }
+
+    /* Header */
+    header.sticky {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: saturate(150%) blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--gap-3);
+      padding: 12px 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-3);
+    }
+
+    .logo {
+      inline-size: 38px;
+      block-size: 38px;
+      border-radius: 10px;
+      background: conic-gradient(
+        from 200deg,
+        var(--accent),
+        var(--accent-2)
+      );
+      box-shadow: var(--shadow-2);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: .2px;
+    }
+
+    .actions {
+      display: flex;
+      gap: var(--gap-2);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: var(--chip);
+      color: var(--fg);
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition:
+        transform var(--trans-1),
+        background var(--trans-1),
+        border-color var(--trans-1);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #001018;
+      border-color: transparent;
+    }
+
+    .btn.ghost {
+      background: transparent;
+    }
+
+    .btn.tiny {
+      padding: 6px 9px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    /* Utility toggles row in header */
+    .utilities {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* Search */
+    .searchbar {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 10px;
+      padding-block: 14px;
+    }
+
+    .input {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--card);
+      color: var(--fg);
+      padding: 12px 14px;
+      width: 100%;
+      transition: border-color var(--trans-1);
+    }
+
+    .input:focus {
+      border-color: var(--focus);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-block-end: 6px;
+    }
+
+    .chip {
+      background: var(--chip);
+      border: 1px solid var(--border);
+      color: var(--fg);
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition:
+        background var(--trans-1),
+        border-color var(--trans-1);
+    }
+
+    .chip[aria-pressed="true"] {
+      outline: var(--outline-w) solid var(--accent);
+      outline-offset: 2px;
+      background: color-mix(
+        in srgb,
+        var(--chip) 60%,
+        var(--accent) 40%
+      );
+      border-color: transparent;
+    }
+
+    /* Sort + status bar */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-block: 6px 12px;
+      flex-wrap: wrap;
+    }
+
+    .status {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (min-width: 720px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-2);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--trans-1);
+    }
+
+    .card:focus-within,
+    .card:hover {
+      transform: translateY(-2px);
+    }
+
+    .thumb-wrap {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .thumb {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      display: block;
+      background: var(--chip);
+    }
+
+    .duration {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      background: #000a;
+      color: #fff;
+      padding: 3px 6px;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+
+    .meta {
+      padding: 10px 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .title {
+      margin: 0;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 12px;
+      background: var(--chip);
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .play {
+      margin: 10px 12px 12px;
+    }
+
+    .play .btn {
+      width: 100%;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 18px;
+      flex-wrap: wrap;
+    }
+
+    .pager-numbers {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .pager-numbers button[aria-current="page"] {
+      background: var(--accent);
+      color: #001018;
+      border-color: transparent;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      display: grid;
+      gap: 10px;
+      padding: 16px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Dialog (player) */
+    dialog#player {
+      border: none;
+      border-radius: 16px;
+      max-width: min(960px, 96vw);
+      padding: 0;
+      box-shadow: var(--shadow-2);
+      background: var(--card);
+      color: var(--fg);
+    }
+
+    dialog::backdrop {
+      background: rgba(0,0,0,.6);
+    }
+
+    .player-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .player-body {
+      padding: 12px 14px 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .player-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--chip);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .notice {
+      padding: 8px 10px;
+      background: var(--chip);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+    /* Overlay (age gate & cookie) */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2,6,23,.78);
+      backdrop-filter: blur(6px);
+      display: grid;
+      place-items: center;
+      z-index: 60;
+    }
+
+    .overlay-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      max-width: 640px;
+      padding: 18px;
+      box-shadow: var(--shadow-2);
+    }
+
+    .overlay h2 {
+      margin: 0 0 8px;
+    }
+
+    .overlay p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .cookie {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 40;
+    }
+
+    .cookie .overlay-card {
+      max-width: 720px;
+      margin-inline: auto;
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    hr.sep {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 12px 0;
+    }
+
+    .small {
+      font-size: 12px;
+    }
+
+    /* Print */
+    @media print {
+      header,
+      .chips,
+      .pagination,
+      #ageGate,
+      #cookieBar,
+      #player {
+        display: none !important;
+      }
+      .card {
+        break-inside: avoid;
+      }
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
 </head>
+
 <body>
-<a class="skip" href="#icerik">İçeriğe geç</a>
-<header class="sticky" role="banner">
-  <nav class="nav container" aria-label="Ana gezinme">
-    <div class="brand" aria-label="Erhan Hub">
-      <div class="logo" aria-hidden="true"></div>
-      <h1>Erhan Hub <span class="visually-hidden">— 18+ Demo</span></h1>
-    </div>
-    <div class="actions" role="group" aria-label="Hızlı işlemler">
-      <button id="themeBtn" class="btn ghost" aria-pressed="false" aria-label="Tema değiştir (açık/koyu)">Tema</button>
-      <button id="addBtn" class="btn primary">İçerik Ekle (Demo)</button>
-    </div>
-  </nav>
-  <div class="container" role="search">
-    <div class="searchbar">
-      <label class="visually-hidden" for="search">Ara</label>
-      <input id="search" class="input" type="search" placeholder="Başlık veya etiket ara…" autocomplete="off" aria-describedby="searchHelp">
-      <div id="searchHelp" class="visually-hidden">Yazdıkça filtrelenir.</div>
-      <button id="clearBtn" class="btn ghost" aria-label="Aramayı temizle">Temizle</button>
-    </div>
-    <div class="chips" role="toolbar" aria-label="Kategoriler">
-      <button class="chip" data-cat="Tümü" aria-pressed="true">Tümü</button>
-      <button class="chip" data-cat="Romantik" aria-pressed="false">Romantik</button>
-      <button class="chip" data-cat="Cinematic" aria-pressed="false">Cinematic</button>
-      <button class="chip" data-cat="HD" aria-pressed="false">HD</button>
-      <button class="chip" data-cat="Trend" aria-pressed="false">Trend</button>
-      <button class="chip" data-cat="Yeni" aria-pressed="false">Yeni</button>
-    </div>
-  </div>
-</header>
+  <a
+    class="skip"
+    href="#icerik"
+  >
+    İçeriğe geç
+  </a>
 
-<main id="icerik" class="container" tabindex="-1">
-  <section aria-label="Video ızgarası">
-    <div id="grid" class="grid" role="list"></div>
-    <nav class="pagination" aria-label="Sayfalama">
-      <button id="prev" class="btn" aria-label="Önceki sayfa">‹ Önceki</button>
-      <span id="pageInfo" class="small" aria-live="polite"></span>
-      <button id="next" class="btn" aria-label="Sonraki sayfa">Sonraki ›</button>
+  <header
+    class="sticky"
+    role="banner"
+  >
+    <nav
+      class="nav container"
+      aria-label="Ana gezinme"
+    >
+      <div
+        class="brand"
+        aria-label="Erhan Hub"
+      >
+        <div
+          class="logo"
+          aria-hidden="true"
+        ></div>
+        <h1>
+          Erhan Hub
+          <span class="visually-hidden">
+            — 18+ Demo
+          </span>
+        </h1>
+      </div>
+
+      <div
+        class="actions"
+        role="group"
+        aria-label="Hızlı işlemler"
+      >
+        <div
+          class="utilities"
+          role="group"
+          aria-label="Görünüm tercihleri"
+        >
+          <button
+            id="themeBtn"
+            class="btn ghost tiny"
+            aria-pressed="false"
+            aria-label="Tema değiştir (açık/koyu)"
+            title="Tema (T)"
+          >
+            Tema
+          </button>
+
+          <button
+            id="contrastBtn"
+            class="btn ghost tiny"
+            aria-pressed="false"
+            aria-label="Yüksek kontrastı aç/kapat"
+            title="Kontrast (H)"
+          >
+            Kontrast
+          </button>
+
+          <button
+            id="motionBtn"
+            class="btn ghost tiny"
+            aria-pressed="false"
+            aria-label="Animasyonları azalt/aç"
+            title="Hareket (M)"
+          >
+            Hareket
+          </button>
+        </div>
+
+        <button
+          id="addBtn"
+          class="btn primary"
+        >
+          İçerik Ekle (Demo)
+        </button>
+      </div>
     </nav>
-  </section>
-</main>
 
-<footer class="container" role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-links" aria-label="Yasal ve iletişim">
-      <a href="#terms">Şartlar</a> •
-      <a href="#privacy">Gizlilik/KVKK</a> •
-      <a href="#dmca">DMCA</a> •
-      <a href="#age">18+ Bildirimi</a> •
-      <a href="#contact">İletişim</a>
-    </div>
-    <hr class="sep">
-    <div class="small">© <span id="yil"></span> Erhan Hub — Bu şablon gerçek yetişkin içerik barındırmaz. Gerçek yayında ek yaş doğrulama ve KVKK/çerez tercih yönetimi entegrasyonları gereklidir.</div>
-  </div>
-</footer>
+    <div
+      class="container"
+      role="search"
+    >
+      <div class="searchbar">
+        <label
+          class="visually-hidden"
+          for="search"
+        >
+          Ara
+        </label>
 
-<dialog id="player" aria-label="Oynatıcı">
-  <div class="player-head">
-    <strong id="playerTitle">Başlık</strong>
-    <div>
-      <button id="closePlayer" class="btn" aria-label="Oynatıcıyı kapat">Kapat (Esc)</button>
-    </div>
-  </div>
-  <div class="player-body">
-    <div class="player-video" role="group" aria-label="Video alanı">
-      <video id="videoEl" class="player-video" controls preload="none" poster="" aria-label="Demo video" tabindex="0">
-        <source id="videoSrc" src="" type="video/mp4">
-      </video>
-    </div>
-    <div class="notice" role="note">Bu bir DEMO oynatıcıdır; tüm görseller ve kaynaklar yer tutucudur.</div>
-  </div>
-</dialog>
+        <input
+          id="search"
+          class="input"
+          type="search"
+          placeholder="Başlık veya etiket ara… (kısayol: / )"
+          autocomplete="off"
+          aria-describedby="searchHelp"
+          enterkeyhint="search"
+        >
 
-<div id="ageGate" class="overlay" role="dialog" aria-modal="true" aria-labelledby="ageTitle" aria-describedby="ageDesc" hidden>
-  <div class="overlay-card">
-    <h2 id="ageTitle">18+ Yaş Doğrulama</h2>
-    <p id="ageDesc">Bu platform <strong>18+</strong> yetişkin içerik için DEMO şablonudur ve gerçek içerik barındırmaz. Devam ederek 18 yaşından büyük olduğunuzu onaylarsınız.</p>
-    <div class="row">
-      <a class="btn" href="about:blank" rel="nofollow" aria-label="Ayrıl">Ayrıl</a>
-      <button id="enterBtn" class="btn primary">Giriş (18+)</button>
-    </div>
-    <p class="small" style="margin-top:8px;color:var(--muted)">Onay tercihiniz tarayıcınızda yerel olarak saklanır.</p>
-  </div>
-</div>
+        <button
+          id="clearBtn"
+          class="btn ghost"
+          aria-label="Aramayı temizle"
+          title="Temizle"
+        >
+          Temizle
+        </button>
 
-<div id="cookieBar" class="cookie" role="region" aria-label="Çerez bildirimi" hidden>
-  <div class="overlay-card">
-    <p><strong>Çerez/Depolama Bildirimi:</strong> Deneyimi geliştirmek için yalnızca zorunlu depolama (tema, sayfa, onaylar) kullanılır. Kabul ediyor musunuz?</p>
-    <div class="row">
-      <button id="cookieDecline" class="btn">Reddet</button>
-      <button id="cookieAccept" class="btn primary">Kabul Et</button>
-    </div>
-  </div>
-</div>
-
-<script>
-(() => {
-  const $ = s => document.querySelector(s);
-  const $$ = s => Array.from(document.querySelectorAll(s));
-  const ls = {
-    get:k=>{try{return localStorage.getItem(k)}catch(_){return null}},
-    set:(k,v)=>{try{localStorage.setItem(k,v)}catch(_){}},
-    rem:k=>{try{localStorage.removeItem(k)}catch(_){}}
-  };
-
-  const YEAR = new Date().getFullYear();
-  $("#yil").textContent = YEAR;
-
-  const THEME_KEY="eh_theme", AGE_KEY="eh_age_ok", COOKIE_KEY="eh_cookie";
-  const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
-  const savedTheme = ls.get(THEME_KEY) || (prefersDark ? "dark" : "light");
-  document.documentElement.setAttribute("data-theme", savedTheme);
-  const setThemeBtnState = ()=>$("#themeBtn").setAttribute("aria-pressed", document.documentElement.getAttribute("data-theme")==="dark");
-  setThemeBtnState();
-  $("#themeBtn").addEventListener("click",()=>{
-    const cur=document.documentElement.getAttribute("data-theme");
-    const next= cur==="dark"?"light":"dark";
-    document.documentElement.setAttribute("data-theme",next);
-    ls.set(THEME_KEY,next);
-    setThemeBtnState();
-  });
-
-  const svgPoster = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop stop-color='%23${(savedTheme==='dark'?'22d3ee':'0ea5e9')}'/><stop offset='1' stop-color='%23${(savedTheme==='dark'?'a78bfa':'7c3aed')}'/></linearGradient></defs><rect width='100%' height='100%' fill='url(#g)'/><g fill='white' opacity='0.9'><circle cx='320' cy='180' r='54'/><polygon points='310,155 350,180 310,205'/></g><text x='50%' y='92%' font-family='Arial,Helvetica,sans-serif' font-size='20' fill='white' text-anchor='middle' opacity='.9'>DEMO • 16:9</text></svg>`);
-  const posterURL = `data:image/svg+xml;charset=utf-8,${svgPoster}`;
-  const tinyVideo = ""; // bilinçli boş; poster gösterimi yeterli DEMO
-
-  const categories = ["Romantik","Cinematic","HD","Trend","Yeni"];
-  const tagsPool = ["soft","artistik","gece","stüdyo","mono","renkli","uzun","kısa","kaliteli","demo","ultra","light","slow","macro"];
-
-  const fmt = (n)=>n.toLocaleString("tr-TR");
-  const pick = (arr)=>arr[Math.floor(Math.random()*arr.length)];
-  const rand=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
-
-  const seed = [];
-  for(let i=1;i<=30;i++){
-    const cat = pick(categories);
-    const tags = Array.from(new Set([cat.toLowerCase(), pick(tagsPool), pick(tagsPool)])).slice(0,3);
-    const mins = rand(3,18), secs = String(rand(0,59)).padStart(2,'0');
-    const views = rand(1_200, 98_000);
-    const day = rand(1,28), month = rand(1,12), year = new Date().getFullYear();
-    seed.push({
-      id:i,
-      title:`Sahne ${String(i).padStart(2,'0')} — ${cat}`,
-      category:cat,
-      tags,
-      duration:`${mins}:${secs}`,
-      views,
-      date:`${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`
-    });
-  }
-
-  const state = { q:"", cat:"Tümü", page:1, per:10, data:seed };
-  const grid = $("#grid"), pageInfo=$("#pageInfo"), prev=$("#prev"), next=$("#next");
-
-  function render(){
-    const q = state.q.trim().toLowerCase();
-    const filtered = state.data.filter(item=>{
-      const matchQ = !q || item.title.toLowerCase().includes(q) || item.tags.some(t=>t.includes(q));
-      const matchC = state.cat==="Tümü" || item.category===state.cat;
-      return matchQ && matchC;
-    });
-    const total = filtered.length;
-    const pages = Math.max(1, Math.ceil(total/state.per));
-    if(state.page>pages) state.page=pages;
-    const start=(state.page-1)*state.per, end=start+state.per;
-    const pageItems = filtered.slice(start,end);
-
-    grid.innerHTML = "";
-    pageItems.forEach((v,idx)=>{
-      const card = document.createElement("article");
-      card.className="card";
-      card.setAttribute("role","listitem");
-      card.innerHTML = `
-        <div class="thumb-wrap">
-          <img class="thumb" loading="lazy" src="${posterURL}" alt="Poster: ${v.title}">
-          <span class="duration" aria-label="Süre">${v.duration}</span>
+        <div class="status" id="liveStatus" role="status" aria-live="polite">
+          Hazır
         </div>
-        <div class="meta">
-          <h3 class="title">${v.title}</h3>
-          <div class="badges">
-            ${v.tags.map(t=>`<span class="badge" aria-label="Etiket">${t}</span>`).join("")}
-          </div>
-          <div class="row">
-            <span aria-label="Görüntülenme">${fmt(v.views)} görüntülenme</span>
-            <time datetime="${v.date}" aria-label="Tarih">${new Date(v.date).toLocaleDateString('tr-TR')}</time>
-          </div>
+      </div>
+
+      <div
+        class="chips"
+        role="toolbar"
+        aria-label="Kategoriler"
+      >
+        <button
+          class="chip"
+          data-cat="Tümü"
+          aria-pressed="true"
+        >
+          Tümü
+        </button>
+
+        <button
+          class="chip"
+          data-cat="Romantik"
+          aria-pressed="false"
+        >
+          Romantik
+        </button>
+
+        <button
+          class="chip"
+          data-cat="Cinematic"
+          aria-pressed="false"
+        >
+          Cinematic
+        </button>
+
+        <button
+          class="chip"
+          data-cat="HD"
+          aria-pressed="false"
+        >
+          HD
+        </button>
+
+        <button
+          class="chip"
+          data-cat="Trend"
+          aria-pressed="false"
+        >
+          Trend
+        </button>
+
+        <button
+          class="chip"
+          data-cat="Yeni"
+          aria-pressed="false"
+        >
+          Yeni
+        </button>
+      </div>
+
+      <div class="toolbar" aria-label="Sıralama ve görünüm">
+        <div class="row" style="gap:10px">
+          <label class="visually-hidden" for="sortSel">Sırala</label>
+          <select id="sortSel" class="input" style="max-width:240px" aria-label="Sırala">
+            <option value="date_desc">Tarih (Yeni → Eski)</option>
+            <option value="date_asc">Tarih (Eski → Yeni)</option>
+            <option value="views_desc">Görüntülenme (Çok → Az)</option>
+            <option value="views_asc">Görüntülenme (Az → Çok)</option>
+            <option value="title_asc">Başlık (A → Z)</option>
+            <option value="title_desc">Başlık (Z → A)</option>
+          </select>
+
+          <label class="visually-hidden" for="perSel">Sayfa başına</label>
+          <select id="perSel" class="input" style="max-width:160px" aria-label="Sayfa başına öğe">
+            <option value="10" selected>10 / sayfa</option>
+            <option value="15">15 / sayfa</option>
+            <option value="20">20 / sayfa</option>
+          </select>
         </div>
-        <div class="play">
-          <button class="btn" data-play="${v.id}" aria-label="'${v.title}' oynat">Oynat</button>
-        </div>`;
-      grid.appendChild(card);
-    });
 
-    pageInfo.textContent = `Sayfa ${state.page} / ${pages} — ${fmt(total)} öğe`;
-    prev.disabled = state.page<=1;
-    next.disabled = state.page>=pages;
-  }
+        <div class="status" id="summaryText" aria-live="polite">
+          —
+        </div>
+      </div>
+    </div>
+  </header>
 
-  $("#search").addEventListener("input",(e)=>{state.q=e.target.value; state.page=1; render()});
-  $("#clearBtn").addEventListener("click",()=>{ $("#search").value=""; state.q=""; state.page=1; render(); $("#search").focus() });
+  <main
+    id="icerik"
+    class="container"
+    tabindex="-1"
+  >
+    <section aria-label="Video ızgarası">
+      <div
+        id="grid"
+        class="grid"
+        role="list"
+      ></div>
 
-  $$(".chip").forEach(btn=>{
-    btn.addEventListener("click",()=>{
-      $$(".chip").forEach(c=>c.setAttribute("aria-pressed","false"));
-      btn.setAttribute("aria-pressed","true");
-      state.cat = btn.dataset.cat;
-      state.page=1; render();
-    });
-    btn.addEventListener("keydown",(ev)=>{
-      if(ev.key==="Enter"||ev.key===" "){ev.preventDefault(); btn.click()}
-    });
-  });
+      <nav
+        class="pagination"
+        aria-label="Sayfalama"
+      >
+        <button
+          id="prev"
+          class="btn"
+          aria-label="Önceki sayfa"
+        >
+          ‹ Önceki
+        </button>
 
-  prev.addEventListener("click",()=>{ if(state.page>1){state.page--; render()}});
-  next.addEventListener("click",()=>{ state.page++; render()});
+        <div
+          class="pager-numbers"
+          id="pager"
+        ></div>
 
-  grid.addEventListener("click",(e)=>{
-    const b = e.target.closest("[data-play]");
-    if(!b) return;
-    const id = Number(b.getAttribute("data-play"));
-    const item = state.data.find(x=>x.id===id);
-    openPlayer(item);
-  });
+        <button
+          id="next"
+          class="btn"
+          aria-label="Sonraki sayfa"
+        >
+          Sonraki ›
+        </button>
 
-  const player = $("#player"), closePlayer=$("#closePlayer"), videoEl=$("#videoEl"), videoSrc=$("#videoSrc"), playerTitle=$("#playerTitle");
-  let lastFocus = null;
-  function openPlayer(item){
-    playerTitle.textContent = item.title;
-    videoEl.poster = posterURL;
-    videoSrc.src = tinyVideo; // yer tutucu
-    try{videoEl.load()}catch(_){}
-    player.showModal();
-    lastFocus = document.activeElement;
-    closePlayer.focus();
-  }
-  function close(){
-    if(player.open){ player.close(); }
-    if(lastFocus){ lastFocus.focus(); }
-    try{ videoEl.pause(); }catch(_){}
-  }
-  closePlayer.addEventListener("click", close);
-  player.addEventListener("close", ()=>{ try{videoEl.pause()}catch(_){} });
-  document.addEventListener("keydown",(e)=>{ if(e.key==="Escape" && player.open) close(); });
+        <span
+          id="pageInfo"
+          class="small"
+          aria-live="polite"
+        ></span>
+      </nav>
+    </section>
+  </main>
 
-  $("#addBtn").addEventListener("click",()=>{
-    const n = state.data.length+1;
-    const cat = pick(categories);
-    const item = {
-      id:n,title:`Sahne ${String(n).padStart(2,'0')} — ${cat}`,
-      category:cat,tags:[cat.toLowerCase(),pick(tagsPool),pick(tagsPool)],
-      duration:`${rand(3,18)}:${String(rand(0,59)).padStart(2,'0')}`,
-      views:rand(200,5000),
-      date:new Date().toISOString().slice(0,10)
-    };
-    state.data.unshift(item);
-    state.page=1; render();
-  });
+  <footer
+    class="container"
+    role="contentinfo"
+  >
+    <div class="footer-inner">
+      <div
+        class="footer-links"
+        aria-label="Yasal ve iletişim"
+      >
+        <a href="#terms">Şartlar</a>
+        <span aria-hidden="true">•</span>
+        <a href="#privacy">Gizlilik/KVKK</a>
+        <span aria-hidden="true">•</span>
+        <a href="#dmca">DMCA</a>
+        <span aria-hidden="true">•</span>
+        <a href="#age">18+ Bildirimi</a>
+        <span aria-hidden="true">•</span>
+        <a href="#contact">İletişim</a>
+      </div>
 
-  // Age Gate
-  const ageGate=$("#ageGate"), enterBtn=$("#enterBtn");
-  const ageOk = ls.get(AGE_KEY)==="1";
-  if(!ageOk){ ageGate.hidden=false; enterBtn.focus(); }
-  enterBtn.addEventListener("click",()=>{ ls.set(AGE_KEY,"1"); ageGate.hidden=true; });
+      <hr class="sep">
 
-  // Cookie bar
-  const cookieBar=$("#cookieBar"), cookieVal=ls.get(COOKIE_KEY);
-  if(!cookieVal){ cookieBar.hidden=false; }
-  $("#cookieAccept").addEventListener("click",()=>{ ls.set(COOKIE_KEY,"accept"); cookieBar.hidden=true; });
-  $("#cookieDecline").addEventListener("click",()=>{ ls.set(COOKIE_KEY,"decline"); cookieBar.hidden=true; });
+      <div class="small">
+        ©
+        <span id="yil"></span>
+        Erhan Hub — Bu şablon gerçek yetişkin içerik barındırmaz.
+        Gerçek yayında ek yaş doğrulama ve KVKK/çerez tercih yönetimi entegrasyonları gereklidir.
+      </div>
+    </div>
+  </footer>
 
-  // Initial render
-  render();
-})();
-</script>
+  <!-- Accessible Player Dialog -->
+  <dialog
+    id="player"
+    aria-label="Oynatıcı"
+  >
+    <div class="player-head">
+      <strong id="playerTitle">
+        Başlık
+      </strong>
+
+      <div class="row" style="gap:6px">
+        <button
+          id="muteBtn"
+          class="btn ghost tiny"
+          aria-pressed="false"
+          aria-label="Sesi kapat/aç"
+          title="Sessiz (S)"
+        >
+          Sessiz
+        </button>
+
+        <button
+          id="closePlayer"
+          class="btn"
+          aria-label="Oynatıcıyı kapat"
+          title="Kapat (Esc)"
+        >
+          Kapat
+        </button>
+      </div>
+    </div>
+
+    <div class="player-body">
+      <div
+        class="player-video"
+        role="group"
+        aria-label="Video alanı"
+      >
+        <video
+          id="videoEl"
+          class="player-video"
+          controls
+          preload="none"
+          poster=""
+          aria-label="Demo video"
+          tabindex="0"
+        >
+          <source
+            id="videoSrc"
+            src=""
+            type="video/mp4"
+          >
+        </video>
+      </div>
+
+      <div
+        class="notice"
+        role="note"
+      >
+        Bu bir DEMO oynatıcıdır; tüm görseller ve kaynaklar <em>yer tutucudur</em>.
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Age Gate -->
+  <div
+    id="ageGate"
+    class="overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="ageTitle"
+    aria-describedby="ageDesc"
+    hidden
+  >
+    <div class="overlay-card">
+      <h2 id="ageTitle">
+        18+ Yaş Doğrulama
+      </h2>
+
+      <p id="ageDesc">
+        Bu platform
+        <strong>18+</strong>
+        yetişkin içerik için DEMO şablonudur ve gerçek içerik barındırmaz.
+        Devam ederek 18 yaşından büyük olduğunuzu onaylarsınız.
+      </p>
+
+      <div class="row" style="justify-content:flex-end">
+        <a
+          class="btn"
+          href="about:blank"
+          rel="nofollow"
+          aria-label="Ayrıl"
+        >
+          Ayrıl
+        </a>
+
+        <button
+          id="enterBtn"
+          class="btn primary"
+        >
+          Giriş (18+)
+        </button>
+      </div>
+
+      <p
+        class="small"
+        style="margin-top:8px;color:var(--muted)"
+      >
+        Onay tercihiniz tarayıcınızda yerel olarak saklanır.
+      </p>
+    </div>
+  </div>
+
+  <!-- Cookie -->
+  <div
+    id="cookieBar"
+    class="cookie"
+    role="region"
+    aria-label="Çerez bildirimi"
+    hidden
+  >
+    <div class="overlay-card">
+      <p>
+        <strong>
+          Çerez/Depolama Bildirimi:
+        </strong>
+        Deneyimi geliştirmek için yalnızca zorunlu depolama
+        (tema, sayfa, onaylar) kullanılır. Kabul ediyor musunuz?
+      </p>
+
+      <div class="row" style="justify-content:flex-end">
+        <button
+          id="cookieDecline"
+          class="btn"
+        >
+          Reddet
+        </button>
+
+        <button
+          id="cookieAccept"
+          class="btn primary"
+        >
+          Kabul Et
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      /* ---------- Shortcuts & LS helpers ---------- */
+      const $  = (s, r = document) => r.querySelector(s);
+      const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+      const LS = {
+        get: (k) => {
+          try { return localStorage.getItem(k); }
+          catch { return null; }
+        },
+        set: (k, v) => {
+          try { localStorage.setItem(k, v); }
+          catch {}
+        },
+        remove: (k) => {
+          try { localStorage.removeItem(k); }
+          catch {}
+        }
+      };
+
+      /* ---------- Keys & Initials ---------- */
+      const KEY_THEME   = "eh_theme";
+      const KEY_CON     = "eh_contrast";
+      const KEY_MOTION  = "eh_motion";
+      const KEY_AGE     = "eh_age_ok";
+      const KEY_COOKIE  = "eh_cookie";
+      const KEY_QUERY   = "eh_query";
+      const KEY_CAT     = "eh_cat";
+      const KEY_PAGE    = "eh_page";
+      const KEY_SORT    = "eh_sort";
+      const KEY_PER     = "eh_per";
+
+      const YEAR = new Date().getFullYear();
+      $("#yil").textContent = YEAR;
+
+      /* ---------- Theme / Contrast / Motion ---------- */
+      const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+      const savedTheme  = LS.get(KEY_THEME)  || (prefersDark ? "dark" : "light");
+      const savedCon    = LS.get(KEY_CON)    || "normal";
+      const savedMotion = LS.get(KEY_MOTION) || "auto";
+
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      document.documentElement.setAttribute("data-contrast", savedCon);
+      document.documentElement.setAttribute("data-motion", savedMotion);
+
+      const themeBtn    = $("#themeBtn");
+      const contrastBtn = $("#contrastBtn");
+      const motionBtn   = $("#motionBtn");
+
+      const syncPressed = () => {
+        themeBtn.setAttribute("aria-pressed",
+          document.documentElement.getAttribute("data-theme") === "dark"
+        );
+        contrastBtn.setAttribute("aria-pressed",
+          document.documentElement.getAttribute("data-contrast") === "high"
+        );
+        motionBtn.setAttribute("aria-pressed",
+          document.documentElement.getAttribute("data-motion") === "reduce"
+        );
+      };
+      syncPressed();
+
+      const setTheme = (next) => {
+        document.documentElement.setAttribute("data-theme", next);
+        LS.set(KEY_THEME, next);
+        syncPressed();
+      };
+
+      const setContrast = (next) => {
+        document.documentElement.setAttribute("data-contrast", next);
+        LS.set(KEY_CON, next);
+        syncPressed();
+      };
+
+      const setMotion = (next) => {
+        document.documentElement.setAttribute("data-motion", next);
+        LS.set(KEY_MOTION, next);
+        syncPressed();
+      };
+
+      themeBtn.addEventListener("click", () => {
+        const cur  = document.documentElement.getAttribute("data-theme");
+        const next = cur === "dark" ? "light" : "dark";
+        setTheme(next);
+        announce("Tema: " + (next === "dark" ? "Koyu" : "Açık"));
+      });
+
+      contrastBtn.addEventListener("click", () => {
+        const cur  = document.documentElement.getAttribute("data-contrast");
+        const next = cur === "high" ? "normal" : "high";
+        setContrast(next);
+        announce("Kontrast: " + (next === "high" ? "Yüksek" : "Normal"));
+      });
+
+      motionBtn.addEventListener("click", () => {
+        const cur  = document.documentElement.getAttribute("data-motion");
+        const next = cur === "reduce" ? "auto" : "reduce";
+        setMotion(next);
+        announce("Hareket: " + (next === "reduce" ? "Azaltıldı" : "Otomatik"));
+      });
+
+      /* ---------- Placeholder poster (data URL) ---------- */
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const colorA = currentTheme === "dark" ? "22d3ee" : "0ea5e9";
+      const colorB = currentTheme === "dark" ? "a78bfa" : "7c3aed";
+
+      const svgPoster = encodeURIComponent(
+        `<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'>
+          <defs>
+            <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+              <stop stop-color='%23${colorA}'/>
+              <stop offset='1' stop-color='%23${colorB}'/>
+            </linearGradient>
+          </defs>
+          <rect width='100%' height='100%' fill='url(#g)'/>
+          <g fill='white' opacity='0.9'>
+            <circle cx='320' cy='180' r='54'/>
+            <polygon points='310,155 350,180 310,205'/>
+          </g>
+          <text x='50%' y='92%' font-family='Arial,Helvetica,sans-serif' font-size='20' fill='white' text-anchor='middle' opacity='.9'>DEMO • 16:9</text>
+        </svg>`
+      );
+      const posterURL = `data:image/svg+xml;charset=utf-8,${svgPoster}`;
+
+      /* ---------- Data seed (placeholder only) ---------- */
+      const categories = [
+        "Romantik",
+        "Cinematic",
+        "HD",
+        "Trend",
+        "Yeni"
+      ];
+
+      const tagsPool = [
+        "soft",
+        "artistik",
+        "gece",
+        "stüdyo",
+        "mono",
+        "renkli",
+        "uzun",
+        "kısa",
+        "kaliteli",
+        "demo",
+        "ultra",
+        "light",
+        "slow",
+        "macro"
+      ];
+
+      const fmt   = (n) => n.toLocaleString("tr-TR");
+      const pick  = (arr) => arr[Math.floor(Math.random() * arr.length)];
+      const rand  = (a, b) => Math.floor(Math.random() * (b - a + 1)) + a;
+
+      const seed = [];
+      for (let i = 1; i <= 36; i++) {
+        const cat   = pick(categories);
+        const tags  = Array.from(new Set([
+          cat.toLowerCase(),
+          pick(tagsPool),
+          pick(tagsPool)
+        ])).slice(0, 3);
+        const mins  = rand(3, 18);
+        const secs  = String(rand(0, 59)).padStart(2, "0");
+        const views = rand(1_200, 198_000);
+        const day   = rand(1, 28);
+        const month = rand(1, 12);
+        const year  = new Date().getFullYear();
+
+        seed.push({
+          id:       i,
+          title:    `Sahne ${String(i).padStart(2, "0")} — ${cat}`,
+          category: cat,
+          tags,
+          duration: `${mins}:${secs}`,
+          views,
+          date:     `${year}-${String(month).padStart(2,"0")}-${String(day).padStart(2,"0")}`
+        });
+      }
+
+      /* ---------- State ---------- */
+      const defaultPer   = Number(LS.get(KEY_PER)  || 10);
+      const defaultSort  = LS.get(KEY_SORT)        || "date_desc";
+      const defaultCat   = LS.get(KEY_CAT)         || "Tümü";
+      const defaultQuery = LS.get(KEY_QUERY)       || "";
+      const defaultPage  = Number(LS.get(KEY_PAGE) || 1);
+
+      const state = {
+        q:     defaultQuery,
+        cat:   defaultCat,
+        page:  defaultPage,
+        per:   defaultPer,
+        sort:  defaultSort,
+        data:  seed.slice()
+      };
+
+      /* ---------- Elements ---------- */
+      const grid       = $("#grid");
+      const pageInfo   = $("#pageInfo");
+      const prevBtn    = $("#prev");
+      const nextBtn    = $("#next");
+      const pager      = $("#pager");
+      const liveStatus = $("#liveStatus");
+      const summary    = $("#summaryText");
+      const searchInp  = $("#search");
+      const clearBtn   = $("#clearBtn");
+      const sortSel    = $("#sortSel");
+      const perSel     = $("#perSel");
+
+      /* ---------- Apply initial UI state ---------- */
+      searchInp.value = state.q;
+      sortSel.value   = state.sort;
+      perSel.value    = String(state.per);
+
+      // Set category pressed
+      $$(".chip").forEach((btn) => {
+        btn.setAttribute("aria-pressed",
+          btn.dataset.cat === state.cat ? "true" : "false"
+        );
+      });
+
+      /* ---------- Announcer ---------- */
+      function announce(msg) {
+        liveStatus.textContent = msg;
+      }
+
+      /* ---------- Filter + Sort + Paginate ---------- */
+      function sortItems(items, mode) {
+        const arr = items.slice();
+        switch (mode) {
+          case "date_desc":
+            arr.sort((a,b) => b.date.localeCompare(a.date));
+            break;
+          case "date_asc":
+            arr.sort((a,b) => a.date.localeCompare(b.date));
+            break;
+          case "views_desc":
+            arr.sort((a,b) => b.views - a.views);
+            break;
+          case "views_asc":
+            arr.sort((a,b) => a.views - b.views);
+            break;
+          case "title_asc":
+            arr.sort((a,b) => a.title.localeCompare(b.title, "tr"));
+            break;
+          case "title_desc":
+            arr.sort((a,b) => b.title.localeCompare(a.title, "tr"));
+            break;
+        }
+        return arr;
+      }
+
+      function filterItems(items, q, cat) {
+        const query = (q || "").trim().toLowerCase();
+        return items.filter((it) => {
+          const qm = !query
+            || it.title.toLowerCase().includes(query)
+            || it.tags.some(t => t.includes(query));
+          const cm = cat === "Tümü" || it.category === cat;
+          return qm && cm;
+        });
+      }
+
+      function paginate(items, page, per) {
+        const total = items.length;
+        const pages = Math.max(1, Math.ceil(total / per));
+        const pg    = Math.min(Math.max(1, page), pages);
+        const start = (pg - 1) * per;
+        const end   = start + per;
+        return {
+          page:   pg,
+          pages,
+          total,
+          slice:  items.slice(start, end)
+        };
+      }
+
+      /* ---------- Render ---------- */
+      function render() {
+        const filtered = filterItems(state.data, state.q, state.cat);
+        const sorted   = sortItems(filtered, state.sort);
+        const pg       = paginate(sorted, state.page, state.per);
+
+        state.page = pg.page;
+
+        grid.innerHTML = "";
+
+        pg.slice.forEach((v) => {
+          const card = document.createElement("article");
+          card.className = "card";
+          card.setAttribute("role", "listitem");
+
+          card.innerHTML = `
+            <div class="thumb-wrap">
+              <img
+                class="thumb"
+                loading="lazy"
+                src="${posterURL}"
+                alt="Poster: ${escapeHtml(v.title)}"
+              >
+              <span
+                class="duration"
+                aria-label="Süre"
+              >
+                ${v.duration}
+              </span>
+            </div>
+
+            <div class="meta">
+              <h3 class="title">
+                ${escapeHtml(v.title)}
+              </h3>
+
+              <div class="badges">
+                ${v.tags.map(t => `
+                  <span
+                    class="badge"
+                    aria-label="Etiket"
+                  >
+                    ${escapeHtml(t)}
+                  </span>
+                `).join("")}
+              </div>
+
+              <div class="row">
+                <span aria-label="Görüntülenme">
+                  ${fmt(v.views)} görüntülenme
+                </span>
+
+                <time
+                  datetime="${v.date}"
+                  aria-label="Tarih"
+                >
+                  ${new Date(v.date).toLocaleDateString("tr-TR")}
+                </time>
+              </div>
+            </div>
+
+            <div class="play">
+              <button
+                class="btn"
+                data-play="${v.id}"
+                aria-label="'${escapeHtml(v.title)}' oynat"
+                title="Oynat"
+              >
+                Oynat
+              </button>
+            </div>
+          `.trim();
+
+          grid.appendChild(card);
+        });
+
+        pageInfo.textContent = `Sayfa ${pg.page} / ${pg.pages} — ${fmt(pg.total)} öğe`;
+
+        buildPager(pg.page, pg.pages);
+
+        prevBtn.disabled = pg.page <= 1;
+        nextBtn.disabled = pg.page >= pg.pages;
+
+        const sum = [
+          state.cat === "Tümü" ? "Tüm kategoriler" : `Kategori: ${state.cat}`,
+          state.q ? `Arama: “${state.q}”` : "Filtre: Yok",
+          `Sıralama: ${readableSort(state.sort)}`,
+          `${state.per}/sayfa`
+        ].join(" • ");
+        summary.textContent = sum;
+
+        // Persist UI (only minimal, regardless of cookie; these are zorunlu)
+        LS.set(KEY_QUERY, state.q);
+        LS.set(KEY_CAT,   state.cat);
+        LS.set(KEY_PAGE,  String(state.page));
+        LS.set(KEY_SORT,  state.sort);
+        LS.set(KEY_PER,   String(state.per));
+
+        announce(`Liste güncellendi: ${fmt(pg.total)} sonuç`);
+      }
+
+      function buildPager(current, total) {
+        pager.innerHTML = "";
+        const windowSize = 5;
+        let start = Math.max(1, current - Math.floor(windowSize/2));
+        let end   = Math.min(total, start + windowSize - 1);
+        start     = Math.max(1, Math.min(start, end - windowSize + 1));
+
+        const makeBtn = (label, page, aria) => {
+          const b = document.createElement("button");
+          b.className = "btn tiny";
+          b.textContent = label;
+          b.setAttribute("aria-label", aria);
+          b.addEventListener("click", () => {
+            state.page = page;
+            render();
+            $("#icerik").focus();
+          });
+          return b;
+        };
+
+        if (start > 1) {
+          pager.appendChild(makeBtn("1", 1, "Sayfa 1"));
+          const dots = document.createElement("span");
+          dots.className = "small";
+          dots.style.padding = "0 4px";
+          dots.textContent = "…";
+          pager.appendChild(dots);
+        }
+
+        for (let i = start; i <= end; i++) {
+          const b = makeBtn(String(i), i, `Sayfa ${i}`);
+          if (i === current) {
+            b.setAttribute("aria-current", "page");
+          }
+          pager.appendChild(b);
+        }
+
+        if (end < total) {
+          const dots = document.createElement("span");
+          dots.className = "small";
+          dots.style.padding = "0 4px";
+          dots.textContent = "…";
+          pager.appendChild(dots);
+          pager.appendChild(makeBtn(String(total), total, `Sayfa ${total}`));
+        }
+      }
+
+      function readableSort(key) {
+        switch (key) {
+          case "date_desc":  return "Tarih (Yeni → Eski)";
+          case "date_asc":   return "Tarih (Eski → Yeni)";
+          case "views_desc": return "Görüntülenme (Çok → Az)";
+          case "views_asc":  return "Görüntülenme (Az → Çok)";
+          case "title_asc":  return "Başlık (A → Z)";
+          case "title_desc": return "Başlık (Z → A)";
+        }
+        return key;
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      /* ---------- Events ---------- */
+      searchInp.addEventListener("input", (e) => {
+        state.q = e.target.value;
+        state.page = 1;
+        render();
+      });
+
+      clearBtn.addEventListener("click", () => {
+        searchInp.value = "";
+        state.q = "";
+        state.page = 1;
+        render();
+        searchInp.focus();
+      });
+
+      $$(".chip").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          $$(".chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+          btn.setAttribute("aria-pressed", "true");
+          state.cat = btn.dataset.cat;
+          state.page = 1;
+          render();
+        });
+
+        btn.addEventListener("keydown", (ev) => {
+          if (ev.key === "Enter" || ev.key === " ") {
+            ev.preventDefault();
+            btn.click();
+          }
+        });
+      });
+
+      sortSel.addEventListener("change", () => {
+        state.sort = sortSel.value;
+        state.page = 1;
+        render();
+      });
+
+      perSel.addEventListener("change", () => {
+        state.per  = Number(perSel.value);
+        state.page = 1;
+        render();
+      });
+
+      prevBtn.addEventListener("click", () => {
+        state.page = Math.max(1, state.page - 1);
+        render();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        state.page = state.page + 1;
+        render();
+      });
+
+      grid.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-play]");
+        if (!b) return;
+        const id   = Number(b.getAttribute("data-play"));
+        const item = state.data.find(x => x.id === id);
+        openPlayer(item);
+      });
+
+      /* ---------- Player ---------- */
+      const player      = $("#player");
+      const closePlayer = $("#closePlayer");
+      const muteBtn     = $("#muteBtn");
+      const videoEl     = $("#videoEl");
+      const videoSrc    = $("#videoSrc");
+      const playerTitle = $("#playerTitle");
+
+      let lastFocus = null;
+      const tinyVideo = ""; // placeholder (bilinçli boş)
+
+      function openPlayer(item) {
+        playerTitle.textContent = item.title;
+        videoEl.poster = posterURL;
+        videoSrc.src   = tinyVideo;
+        try { videoEl.load(); } catch {}
+        player.showModal();
+        lastFocus = document.activeElement;
+        closePlayer.focus();
+        announce("Oynatıcı açıldı");
+      }
+
+      function close() {
+        if (player.open) player.close();
+        if (lastFocus)   lastFocus.focus();
+        try { videoEl.pause(); } catch {}
+        announce("Oynatıcı kapandı");
+      }
+
+      closePlayer.addEventListener("click", close);
+      player.addEventListener("close", () => {
+        try { videoEl.pause(); } catch {}
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && player.open) {
+          e.preventDefault();
+          close();
+        }
+      });
+
+      muteBtn.addEventListener("click", () => {
+        const next = !videoEl.muted;
+        videoEl.muted = next;
+        muteBtn.setAttribute("aria-pressed", String(next));
+        announce(next ? "Ses kapalı" : "Ses açık");
+      });
+
+      /* ---------- Add Demo Item ---------- */
+      $("#addBtn").addEventListener("click", () => {
+        const n   = state.data.length + 1;
+        const cat = pick(categories);
+        const item = {
+          id:       n,
+          title:    `Sahne ${String(n).padStart(2, "0")} — ${cat}`,
+          category: cat,
+          tags:     [cat.toLowerCase(), pick(tagsPool), pick(tagsPool)],
+          duration: `${rand(3,18)}:${String(rand(0,59)).padStart(2,"0")}`,
+          views:    rand(200, 5_000),
+          date:     new Date().toISOString().slice(0, 10)
+        };
+        state.data.unshift(item);
+        state.page = 1;
+        render();
+        announce("Yeni içerik eklendi");
+      });
+
+      /* ---------- Age Gate ---------- */
+      const ageGate  = $("#ageGate");
+      const enterBtn = $("#enterBtn");
+      const ageOk    = LS.get(KEY_AGE) === "1";
+
+      if (!ageOk) {
+        ageGate.hidden = false;
+        setTimeout(() => enterBtn.focus(), 0);
+      }
+
+      enterBtn.addEventListener("click", () => {
+        LS.set(KEY_AGE, "1");
+        ageGate.hidden = true;
+        announce("18+ onayı verildi");
+      });
+
+      /* ---------- Cookie Bar ---------- */
+      const cookieBar  = $("#cookieBar");
+      const cookieVal  = LS.get(KEY_COOKIE);
+
+      if (!cookieVal) {
+        cookieBar.hidden = false;
+      }
+
+      $("#cookieAccept").addEventListener("click", () => {
+        LS.set(KEY_COOKIE, "accept");
+        cookieBar.hidden = true;
+        announce("Çerez bildirimi kabul edildi");
+      });
+
+      $("#cookieDecline").addEventListener("click", () => {
+        LS.set(KEY_COOKIE, "decline");
+        cookieBar.hidden = true;
+        announce("Çerez bildirimi reddedildi");
+      });
+
+      /* ---------- Keyboard Shortcuts ---------- */
+      document.addEventListener("keydown", (e) => {
+        if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
+
+        if (e.key === "/") {
+          e.preventDefault();
+          searchInp.focus();
+          announce("Arama odakta");
+        }
+
+        if (e.key.toLowerCase() === "t") {
+          e.preventDefault();
+          themeBtn.click();
+        }
+
+        if (e.key.toLowerCase() === "h") {
+          e.preventDefault();
+          contrastBtn.click();
+        }
+
+        if (e.key.toLowerCase() === "m") {
+          e.preventDefault();
+          motionBtn.click();
+        }
+
+        if (e.key === "ArrowRight") {
+          if (!nextBtn.disabled) {
+            e.preventDefault();
+            nextBtn.click();
+          }
+        }
+
+        if (e.key === "ArrowLeft") {
+          if (!prevBtn.disabled) {
+            e.preventDefault();
+            prevBtn.click();
+          }
+        }
+      });
+
+      /* ---------- Initial render ---------- */
+      render();
+    })();
+  </script>
 </body>
 </html>
